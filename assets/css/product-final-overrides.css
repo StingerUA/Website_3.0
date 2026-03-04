@@ -124,3 +124,10 @@ html.product-text-black .footer-logo img.albaspace-img {
   filter: none !important;
 }
 
+/* Ensure header and footer have dark blue background on product pages */
+html.product-text-black header.site-header,
+html.product-text-black footer {
+  background: #020617 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+

@@ -27,6 +27,11 @@
     opacity: 1;
 }
 
+.header-logo-icon img {
+    width: 14px !important;
+    height: 14px !important;
+}
+
 /* Hide original AI/Alien in the right switch to avoid duplicates */
 .top-lang-switch .ai-widget-toggle,
 .top-lang-switch .alien-dropdown-container {
