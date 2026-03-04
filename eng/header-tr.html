@@ -1,0 +1,117 @@
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <div class="header-logo-container">
+      <a href="/index.html" class="header-logo-icon">
+        <img src="/assets/images/albalogo.png" alt="Logo">
+      </a>
+      <a href="/index.html" class="header-logo">
+        <img src="/assets/images/albaspace.png" alt="AlbaSpace" class="albaspace-img">
+      </a>
+    </div>
+
+    <!-- BURGER -->
+    <button class="menu-toggle" type="button"
+            aria-label="Open/close menu" aria-expanded="false">
+      <span class="menu-label">MENU</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <a href="/index.html">HOME</a>
+      <a href="/atlas.html">ATLAS</a>
+      <a href="/shop.html">SHOP</a>
+      <!-- НОВЫЙ ПУНКТ -->
+      <a href="/albamen.html">ALBAMEN</a>
+      <a href="/hakkimizda.html">ABOUT US</a>
+      <a href="/hizmetler.html">SERVICES</a>
+      <div class="dropdown">
+        <a href="/kupsat.html" class="dropdown-trigger" aria-expanded="false">OUR PRODUCTS</a>
+        <div class="dropdown-menu">
+          <a href="/kupsat.html">KÜPSAT</a>
+        </div>
+      </div>
+      <a href="/basindabiz.html">IN THE PRESS</a>
+      <a href="/galeri.html">GALLERY</a>
+      <a href="/iletisim.html">CONTACT</a>
+    </nav>
+
+    <!-- Social icons -->
+    <div class="header-social">
+      <div class="social-row">
+        <a href="https://www.instagram.com/albaspace_/" target="_blank"
+           aria-label="Instagram" data-track="inst">
+          <img src="/assets/icons/inst.png" alt="Instagram">
+        </a>
+
+        <a href="https://www.linkedin.com/in/idrisalbayrak/" target="_blank"
+           aria-label="LinkedIn">
+          <img src="/assets/icons/linkdin.png" alt="LinkedIn">
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/905387781018" target="_blank"
+           aria-label="WhatsApp" data-track="whatsapp">
+          <img src="/assets/icons/watsupp.png" alt="WhatsApp">
+        </a>
+
+        <a href="https://www.youtube.com/@AlbaSpaceTr" target="_blank"
+           aria-label="YouTube">
+          <img src="/assets/icons/youtube.png" alt="YouTube">
+        </a>
+      </div>
+
+      <!-- Language switch -->
+      <div class="top-lang-switch">
+        <!-- AI widget toggle: placed to the left -->
+        <a href="#" class="ai-widget-toggle" aria-label="AI widget" title="AI">
+          <img src="/assets/images/albamenai.png" alt="AI" />
+        </a>
+
+        <!-- Alien placeholder button -->
+        <a href="#" class="alien-ghost" aria-label="Alien" title="Alien">
+          <img src="/assets/icons/alien.png" alt="Alien">
+        </a>
+
+        <a href="/index.html" data-lang="tr" class="lang-flag" aria-label="Turkish">
+          <img src="/assets/icons/flag-tr.png" alt="Turkish">
+        </a>
+
+        <a href="/eng/index.html" data-lang="en" class="lang-flag" aria-label="English">
+          <img src="/assets/icons/flag-us.png" alt="English">
+        </a>
+
+        <a href="/cart.html" class="lang-flag header-cart-link" aria-label="Sepet">
+          <span class="header-cart-icon">
+            <img src="/assets/icons/chart.png" alt="Sepet">
+            <span class="header-cart-count" data-cart-count>0</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<link rel="stylesheet" href="/assets/css/model-nav-overrides.css">
+<script src="/assets/js/menu-toggle.js" defer></script>
+<script src="/assets/js/cart.js" defer></script>
+<script src="/assets/js/lang-switch.js" defer></script>
+<script src="/assets/js/ai-widget.js" defer></script>
+<script src="/assets/js/model-nav-loader.js" defer></script>
+<style>
+  /* Make the Hizmetleri / Services nav link blue */
+  .main-nav a[href="/hizmetler.html"],
+  .main-nav a[href="/eng/hizmetler.html"],
+  .main-nav a[href="/rus/hizmetler.html"] {
+    color: var(--accent, #00c2ff) !important;
+  }
+</style>
+<style>
+  .header-logo-icon img { transform: scale(2); transform-origin: center; display: inline-block; }
+  .header-logo img { transform: scale(7.0); }
+  /* Ensure albaspace text shifts right for this include variant */
+  .albaspace-img { margin-left: 10px; display: inline-block; }
+  @media (max-width: 900px) { .albaspace-img { margin-left: 12px; } }
+</style>
