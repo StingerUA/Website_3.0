@@ -41,8 +41,10 @@ html.product-text-black svg {
 
 /* Make header and footer backgrounds dark blue on product pages */
 html.product-text-black .site-header,
-html.product-text-black header.site-header {
+html.product-text-black header.site-header,
+html.product-text-black header {
   background: #020617 !important; /* deep dark blue */
+  background-color: #020617 !important;
   border-bottom: 1px solid rgba(255,255,255,0.05) !important;
 }
 
@@ -52,7 +54,24 @@ html.product-text-black .footer--tr,
 html.product-text-black .footer--en,
 html.product-text-black .footer--ru {
   background: #020617 !important;
+  background-color: #020617 !important;
   color: #ffffff !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+}
+
+/* Force dark background on header/footer children too */
+html.product-text-black header *,
+html.product-text-black .site-header *,
+html.product-text-black footer *,
+html.product-text-black .footer * {
+  background-color: transparent !important;
+}
+
+/* Explicitly set dark background for header/footer container elements */
+html.product-text-black .header-inner,
+html.product-text-black .footer-grid,
+html.product-text-black .footer-grid--3 {
+  background: transparent !important;
 }
 
 /* Ensure links and icons in header/footer are visible */

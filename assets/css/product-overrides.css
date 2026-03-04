@@ -10,8 +10,23 @@ html, body {
   background: none !important;
 }
 
-/* Make most text black and remove translucent backgrounds (exclude signup modal) */
-body *:not(.signup-modal-overlay):not(.signup-modal-overlay *) {
+/* CRITICAL: Ensure header and footer are NOT white - override any white background rules */
+html header,
+html footer,
+html header.site-header,
+html footer.footer,
+html .site-header,
+html .footer {
+  background: #020617 !important;
+  background-color: #020617 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Make most text black and remove translucent backgrounds from main content only */
+main,
+main * {
   color: #000000 !important;
   background-color: transparent !important;
   border-color: transparent !important;

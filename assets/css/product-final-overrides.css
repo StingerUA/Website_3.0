@@ -98,11 +98,15 @@ html.product-text-black .stripe, html.product-text-black .title-underline, html.
   display: none !important;
 }
 
-/* Product pages: dark navy footer */
+/* Product pages: dark navy footer and header with consistent color */
+html.product-text-black header,
+html.product-text-black .site-header,
+html.product-text-black header.site-header,
 html.product-text-black footer,
 html.product-text-black .footer,
 html.product-text-black .footer-bottom {
-  background: #072146 !important;
+  background: #020617 !important;
+  background-color: #020617 !important;
   color: #ffffff !important;
 }
 
@@ -110,13 +114,23 @@ html.product-text-black footer a,
 html.product-text-black footer .footer-action__title,
 html.product-text-black footer .footer-action__value,
 html.product-text-black footer .footer-action__hint,
-html.product-text-black footer p {
+html.product-text-black footer p,
+html.product-text-black header a,
+html.product-text-black header p {
   color: rgba(255,255,255,0.95) !important;
 }
 
 /* Make social and icon images visible on dark background */
-html.product-text-black footer img {
+html.product-text-black footer img,
+html.product-text-black header img {
   filter: brightness(0) invert(1) !important;
+}
+
+/* Ensure header/footer children don't override parent background */
+html.product-text-black header *,
+html.product-text-black footer * {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
 /* If there are brand logos that should remain original, reset their filter by class */
