@@ -289,6 +289,8 @@ select, select option {
 
   border-bottom:1px solid #0f172a;
 
+  box-shadow: 0 4px 12px rgba(0, 194, 255, 0.15);
+
 }
 
 .header-inner{
@@ -396,6 +398,40 @@ select, select option {
   object-fit:contain;
 
   margin-left: 8px;
+
+}
+
+/* Logo sub-icons spacing */
+
+.logo-sub-icons {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+}
+
+.logo-sub-icons a {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-decoration: none;
+
+}
+
+.logo-sub-icons img {
+
+  width: 32px;
+
+  height: 32px;
+
+  object-fit: contain;
 
 }
 
@@ -1575,6 +1611,7 @@ select, select option {
   color: #fff;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 40px;
+  box-shadow: 0 -4px 12px rgba(0, 194, 255, 0.15);
 }
 
 .footer-grid {
