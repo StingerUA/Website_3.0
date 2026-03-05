@@ -99,6 +99,15 @@ html.product-text-black .stripe, html.product-text-black .title-underline, html.
 }
 
 /* Product pages: dark navy footer and header with consistent color */
+header,
+header.site-header,
+.site-header,
+footer,
+footer.footer,
+.footer,
+.footer--tr,
+.footer--en,
+.footer--ru,
 html.product-text-black header,
 html.product-text-black .site-header,
 html.product-text-black header.site-header,
@@ -120,13 +129,20 @@ html.product-text-black header p {
   color: rgba(255,255,255,0.95) !important;
 }
 
-/* Make social and icon images visible on dark background */
+/* Make icon images visible without inverting */
 html.product-text-black footer img,
 html.product-text-black header img {
-  filter: brightness(0) invert(1) !important;
+  filter: none !important;
+  opacity: 1 !important;
 }
 
 /* Ensure header/footer children don't override parent background */
+header *,
+header.site-header *,
+.site-header *,
+footer *,
+footer.footer *,
+.footer *,
 html.product-text-black header *,
 html.product-text-black footer * {
   background: transparent !important;
@@ -136,12 +152,5 @@ html.product-text-black footer * {
 /* If there are brand logos that should remain original, reset their filter by class */
 html.product-text-black .footer-logo img.albaspace-img {
   filter: none !important;
-}
-
-/* Ensure header and footer have dark blue background on product pages */
-html.product-text-black header.site-header,
-html.product-text-black footer {
-  background: #020617 !important;
-  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
 }
 

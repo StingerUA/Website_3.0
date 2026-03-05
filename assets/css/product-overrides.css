@@ -4,6 +4,32 @@ html, body {
   color: #000000 !important;
 }
 
+/* ============ ABSOLUTE PRIORITY FOR HEADER/FOOTER DARK BACKGROUND ============ */
+/* Force header and footer to always be dark blue, not white */
+header,
+header.site-header,
+.site-header,
+footer,
+footer.footer,
+.footer,
+.footer--tr,
+.footer--en,
+.footer--ru {
+  background: #020617 !important;
+  background-color: #020617 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Override any Tailwind bg- classes on header/footer */
+header[class*="bg-"],
+footer[class*="bg-"],
+.site-header[class*="bg-"],
+.footer[class*="bg-"] {
+  background: #020617 !important;
+  background-color: #020617 !important;
+}
+
 /* Hide decorative space background and any site-wide gradients */
 .space-bg {
   display: none !important;
@@ -16,12 +42,23 @@ html footer,
 html header.site-header,
 html footer.footer,
 html .site-header,
-html .footer {
+html .footer,
+html .header-inner,
+html .footer-grid {
   background: #020617 !important;
   background-color: #020617 !important;
   color: #ffffff !important;
   border: none !important;
   box-shadow: none !important;
+}
+
+/* Override Tailwind classes that might white background on header/footer */
+header.bg-white,
+footer.bg-white,
+.site-header.bg-white,
+.footer.bg-white {
+  background: #020617 !important;
+  background-color: #020617 !important;
 }
 
 /* Make most text black and remove translucent backgrounds from main content only */
