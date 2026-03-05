@@ -4,8 +4,27 @@ html, body {
   color: #000000 !important;
 }
 
+/* Override CSS custom properties to ensure dark header/footer */
+html, :root {
+  --header-bg: #020617 !important;
+}
+
+/* ============ OVERRIDE SHOP.CSS HEADER/FOOTER RULES ============ */
+/* shop.css defines .site-header and .footer, we MUST override these */
+.site-header {
+  background: #020617 !important;
+  color: #ffffff !important;
+}
+
+.footer {
+  background: #020617 !important;
+  color: #ffffff !important;
+}
+
 /* ============ ABSOLUTE PRIORITY FOR HEADER/FOOTER DARK BACKGROUND ============ */
 /* Force header and footer to always be dark blue, not white */
+[data-include*="header"] header,
+[data-include*="footer"] footer,
 header,
 header.site-header,
 .site-header,
@@ -19,6 +38,19 @@ footer.footer,
   background-color: #020617 !important;
   color: white !important;
   border: none !important;
+}
+
+/* Override pseudo-elements too */
+header::before,
+header::after,
+footer::before,
+footer::after,
+.site-header::before,
+.site-header::after,
+.footer::before,
+.footer::after {
+  background: transparent !important;
+  display: none !important;
 }
 
 /* Override any Tailwind bg- classes on header/footer */

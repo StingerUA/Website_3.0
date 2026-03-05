@@ -98,59 +98,64 @@ html.product-text-black .stripe, html.product-text-black .title-underline, html.
   display: none !important;
 }
 
-/* Product pages: dark navy footer and header with consistent color */
+/* ============ FINAL ABSOLUTE OVERRIDE - Loaded at the end from footer ============ */
+/* This file has the HIGHEST priority as it's loaded last from footer */
+
+/* Make header and footer ALWAYS dark blue - no exceptions */
 header,
-header.site-header,
-.site-header,
 footer,
+header.site-header,
 footer.footer,
+.site-header,
 .footer,
 .footer--tr,
 .footer--en,
 .footer--ru,
+.header-inner,
+.footer-grid,
+.footer-grid--3 {
+  background: #020617 !important;
+  background-color: #020617 !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Ultra-specific: ensure no child element can change the header/footer background */
+header *,
+footer *,
+.site-header *,
+.footer *,
+[data-include*="header"] *,
+[data-include*="footer"] * {
+  background-color: transparent !important;
+}
+
+/* Keep specific elements visible on dark background */
+header a,
+header img,
+footer a,
+footer img,
+.footer a,
+.footer img {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Also apply for the product-text-black class context */
 html.product-text-black header,
-html.product-text-black .site-header,
-html.product-text-black header.site-header,
 html.product-text-black footer,
-html.product-text-black .footer,
-html.product-text-black .footer-bottom {
+html.product-text-black .site-header,
+html.product-text-black .footer {
   background: #020617 !important;
   background-color: #020617 !important;
   color: #ffffff !important;
 }
 
-html.product-text-black footer a,
-html.product-text-black footer .footer-action__title,
-html.product-text-black footer .footer-action__value,
-html.product-text-black footer .footer-action__hint,
-html.product-text-black footer p,
-html.product-text-black header a,
-html.product-text-black header p {
-  color: rgba(255,255,255,0.95) !important;
-}
-
-/* Make icon images visible without inverting */
-html.product-text-black footer img,
-html.product-text-black header img {
-  filter: none !important;
-  opacity: 1 !important;
-}
-
-/* Ensure header/footer children don't override parent background */
-header *,
-header.site-header *,
-.site-header *,
-footer *,
-footer.footer *,
-.footer *,
 html.product-text-black header *,
-html.product-text-black footer * {
-  background: transparent !important;
+html.product-text-black footer *,
+html.product-text-black .site-header *,
+html.product-text-black .footer * {
   background-color: transparent !important;
-}
-
-/* If there are brand logos that should remain original, reset their filter by class */
-html.product-text-black .footer-logo img.albaspace-img {
-  filter: none !important;
 }
 
