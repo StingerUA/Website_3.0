@@ -1,0 +1,198 @@
+/**
+ * Typography & Spacing Conversions (px to rem)
+ * 
+ * Конвертация критических значений шрифтов и отступов с px на rem
+ * для лучшей масштабируемости и доступности.
+ * 
+ * Базис: 1rem = 16px
+ */
+
+/* ===== FONT SIZES ===== */
+
+.cookie-text,
+.form-label,
+.footer-address p,
+.footer-center p {
+  font-size: 0.875rem; /* 14px */
+}
+
+.cookie-link,
+.btn-cookie {
+  font-size: 0.875rem; /* 14px */
+}
+
+.cookie-header {
+  font-size: 1.25rem; /* 20px */
+}
+
+.mobile-portal-nav a {
+  font-size: 1.125rem; /* 18px */
+}
+
+/* Forms and inputs */
+.form-control {
+  font-size: 0.875rem; /* 14px */
+}
+
+/* ===== PADDING & MARGIN FOR CONTAINERS ===== */
+
+/* Cookie Modal */
+.cookie-modal {
+  padding: 1.875rem; /* 30px */
+  margin-bottom: 1.25rem; /* 20px */
+}
+
+.cookie-header {
+  margin-bottom: 0.625rem; /* 10px */
+}
+
+.cookie-text {
+  margin-bottom: 0.9375rem; /* 15px */
+}
+
+.cookie-link {
+  margin-bottom: 1.5625rem; /* 25px */
+}
+
+.btn-cookie {
+  padding: 0.9375rem; /* 15px */
+}
+
+.btn-cookie:not(:last-child) {
+  margin-bottom: 0.625rem; /* 10px */
+}
+
+/* Header Adjustments */
+.header-inner {
+  gap: 0.625rem; /* 10px */
+}
+
+.header-logo {
+  gap: 0.5rem; /* 8px */
+}
+
+.header-logo img {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+}
+
+/* Navigation */
+.main-nav {
+  gap: 1rem; /* 16px */
+  font-size: 0.875rem; /* 14px */
+}
+
+/* Mobile Portal Navigation */
+.mobile-portal-nav {
+  padding: 6.25rem 1.25rem 2.5rem; /* 100px 20px 40px */
+  gap: 1.25rem; /* 20px */
+}
+
+.mobile-portal-nav a {
+  padding: 0.625rem; /* 10px */
+}
+
+.mobile-portal-nav .dropdown-menu {
+  gap: 0.625rem; /* 10px */
+  padding-bottom: 0.625rem; /* 10px */
+}
+
+/* Footer */
+.footer {
+  padding: 1.625rem 1.25rem; /* 26px 20px */
+  font-size: 0.8125rem; /* 13px */
+}
+
+.footer-grid {
+  gap: 1.875rem; /* 30px */
+  padding: 0 clamp(0.5rem, 2%, 1.5rem);
+}
+
+.footer-logo img {
+  width: 3.25rem; /* 52px */
+  height: 3.25rem; /* 52px */
+}
+
+.footer-social {
+  gap: 0.875rem; /* 14px */
+  margin-bottom: 0.375rem; /* 6px */
+}
+
+.footer-address p,
+.footer-center p {
+  margin: 0.125rem 0; /* 2px 0 */
+}
+
+/* Forms */
+.form-grid {
+  gap: 0.875rem 1.125rem; /* 14px 18px */
+}
+
+.form-label {
+  margin-bottom: 0.25rem; /* 4px */
+}
+
+.form-control {
+  border-radius: 62.3125rem; /* 999px */
+  border: 1px solid #1f2937;
+  padding: 0.625rem 0.875rem; /* 10px 14px */
+}
+
+.form-control:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.55);
+}
+
+.contact-note {
+  font-size: 0.6875rem; /* 11px */
+  margin-top: 0.375rem; /* 6px */
+}
+
+.contact-submit {
+  margin-top: 1.125rem; /* 18px */
+}
+
+/* ===== МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ===== */
+
+@media (max-width: 480px) {
+  .mobile-portal-nav {
+    padding: 6.25rem 1rem 2rem; /* Уменьшен боковой padding на очень узких экранах */
+  }
+
+  .cookie-modal {
+    padding: 1.25rem; /* 20px */
+  }
+
+  .form-control {
+    min-height: 2.75rem; /* 44px */
+    padding: 0.75rem 1rem; /* 12px 16px */
+  }
+
+  textarea.form-control {
+    min-height: 7.5rem; /* 120px */
+  }
+
+  .contact-submit button {
+    min-height: 2.75rem; /* 44px */
+    padding: 0.75rem 1.25rem; /* 12px 20px */
+  }
+}
+
+/* ===== ИКОНКИ (специальная обработка) ===== */
+
+.header-logo img {
+  padding: 0.25rem; /* 4px */
+  border-radius: 62.3125rem; /* 999px */
+}
+
+/* Voice chat icons */
+.voice-bar {
+  width: 0.25rem; /* 4px */
+  border-radius: 62.3125rem; /* 999px */
+}
+
+.voice-stop-btn {
+  width: 2.125rem; /* 34px */
+  height: 2.125rem; /* 34px */
+  border-radius: 62.3125rem; /* 999px */
+}

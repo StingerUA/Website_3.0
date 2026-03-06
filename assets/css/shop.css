@@ -14,9 +14,10 @@
    ========================= */
 
 .shop-container {
-  max-width: 1100px;
+  max-width: 100%;
+  width: 100%;
   margin: 40px auto 80px;
-  padding: 0 20px;
+  padding: 0 clamp(0.5rem, 2%, 1.5rem);
 }
 
 .product-list {
@@ -30,8 +31,9 @@
   background: rgba(10, 15, 30, 0.35);
   border: 1px solid rgba(140, 180, 255, 0.22);
   border-radius: 20px;
-  /* ИЗМЕНЕНО: уменьшил ширину с 320px до 280px */
-  width: 280px; 
+  /* Адаптивная ширина: на 320px - 100%, на 480px - 45%, на 768px+ - 280px */
+  flex: 0 1 clamp(auto, 45%, 280px);
+  min-width: 140px;
   /* ИЗМЕНЕНО: сделал высоту автоматической, чтобы не было лишнего пустого места */
   min-height: auto; 
   overflow: visible;
@@ -63,8 +65,8 @@
 
 .product-card img {
   width: 100%;
-  /* ИЗМЕНЕНО: увеличил высоту картинки с 220px до 380px, чтобы она была вертикально-прямоугольной */
-  height: 380px; 
+  /* Адаптивная высота с правильным aspect-ratio (3:4) */
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
 }
@@ -125,13 +127,11 @@
 /* Responsive adjustments for mobile screens */
 @media (max-width: 600px) {
   .product-card {
-    width: 100%;
-    min-height: auto;
+    flex: 0 1 100%;
   }
 
   .product-card img {
-    /* ИЗМЕНЕНО: на мобилках тоже сделал картинку повыше */
-    height: 320px; 
+    /* Используется aspect-ratio из основного стиля */
   }
 
   .product-badge {

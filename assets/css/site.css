@@ -12,6 +12,11 @@ select option {
 
    (НЕ трогаем background и color, чтобы страницы сами их задавали) */
 
+html {
+  /* Базовая элемент для расчёта rem (1rem = 16px) */
+  font-size: 16px;
+}
+
 :root {
 
   --header-bg: transparent;
@@ -170,9 +175,9 @@ select, select option {
 }
 
 .cookie-header {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   color: #e5e7eb !important;
   text-transform: uppercase;
 }
@@ -295,11 +300,13 @@ select, select option {
 
 .header-inner{
 
-  max-width:1200px;
+  max-width:100%;
+
+  width:100%;
 
   margin:0 auto;
 
-  padding:10px 15px;
+  padding:10px clamp(0.5rem, 2%, 1.5rem);
 
   display:flex;
 
@@ -1554,7 +1561,7 @@ select, select option {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  max-height: 80vh;
   background: #020617 !important; /* Force solid background */
   z-index: 10002; /* Ensure above content */
   padding: 100px 20px 40px;
@@ -1565,6 +1572,7 @@ select, select option {
   transform: translateY(-100%);
   transition: transform 0.3s ease;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-portal-nav.nav-open {
@@ -1617,7 +1625,9 @@ select, select option {
 .footer-grid {
   display: grid;
   gap: 30px;
-  max-width: 1200px;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 clamp(0.5rem, 2%, 1.5rem);
   margin: 0 auto;
 }
 

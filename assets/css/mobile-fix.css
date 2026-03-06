@@ -1,0 +1,178 @@
+/**
+ * Mobile Fix CSS
+ * Критичные исправления для горизонтального скролла на мобильных устройствах
+ * Подключить ПЕРВЫМ перед всеми другими CSS файлами
+ * 
+ * Решает проблему: синяя полоса справа на узких экранах (320-480px)
+ * Применимо к: Xiaomi 12 и все мобильные устройства
+ */
+
+/* === ГЛОБАЛЬНЫЕ ПЕРЕОПРЕДЕЛЕНИЯ === */
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+html {
+  /* Убедиться, что html не выходит за экран */
+  position: relative;
+  box-sizing: border-box;
+}
+
+* {
+  /* Убедиться что все элементы не вызывают горизонтальный скролл */
+  box-sizing: border-box;
+}
+
+body {
+  /* Убедиться что body содержит контент и не вызывает overflow */
+  position: relative;
+}
+
+/* === ЗАЩИТА ОТ ФИКСИРОВАННЫХ ШИРИН === */
+
+/* Все контейнеры должны быть адаптивными */
+.container,
+.wrapper,
+[class*="shell"],
+[class*="content"],
+[class*="section"],
+main,
+section,
+article,
+aside {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* === ИСПРАВЛЕНИЕ PADDING/MARGIN ПЕРЕПОЛНЕНИЯ === */
+
+/* Убедиться что padding не вызывает overflow */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
+/* === ИСПРАВЛЕНИЕ ДЛЯ IOS SAFARI === */
+
+/* iOS Safari может добавить 100vh без учёта адреса бара */
+body {
+  min-height: 100svh; /* Safe viewport height для iOS 15+ */
+  /* Fallback для старых браузеров */
+  min-height: 100vh;
+}
+
+/* === УЛУЧШЕНИЕ TOUCH СОБЫТИЙ === */
+
+/* Отключить горизонтальные жесты, которые могут вызвать скролл */
+body {
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: auto;
+}
+
+/* === ИСПРАВЛЕНИЕ ИЗОБРАЖЕНИЙ И ВИДЕО === */
+
+img,
+picture,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === ИСПРАВЛЕНИЕ ТАБЛИЦ === */
+
+table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* === ИСПРАВЛЕНИЕ БОЛЬШИХ ТЕКСТОВ === */
+
+p, span, a, button, input, textarea, select {
+  /* Убедиться что длинные слова переносятся правильно */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+code, pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* === ИСПРАВЛЕНИЕ ФОРМ === */
+
+input, textarea, select, button {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* === СПЕЦИАЛЬНОЕ ИСПРАВЛЕНИЕ ДЛЯ EDGE BROWSERS === */
+
+@supports (padding: max(0px)) {
+  /* Используется для поддержки safe areas на notched устройствах */
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* === ИСПРАВЛЕНИЕ ДЛЯ ХРОМОВЫХ БРАУЗЕРОВ === */
+
+@media (max-width: 480px) {
+  /* На очень узких экранах убедиться что нет скрытого контента справа */
+  * {
+    max-width: 100vw;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* === ДОПОЛНИТЕЛЬНАЯ ЗАЩИТА: ОТКЛЮЧИТЬ МАСШТАБИРОВАНИЕ ЕСЛИ NEEDED === */
+
+/* Если сайт полностью зафиксирован по размерам, можно добавить этот comment:
+   
+   html {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    overflow: hidden;
+   }
+   
+   body {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+   }
+   
+   Но это радикальное решение, используй только если проблема не решена.
+*/
+
+/* === DEBUG MODE - ЗАКОММЕНТИРОВАТЬ ДЛЯ PRODUCTION === */
+
+/* Раскомментируй для диагностики overflow проблем:
+   
+   * {
+     outline: 1px solid red !important;
+   }
+   
+   html {
+     background-color: blue !important;
+   }
+*/
