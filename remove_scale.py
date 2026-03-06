@@ -35,8 +35,8 @@ for item in dirs_to_remove_scale:
         content = f.read()
     
     # Remove scale attribute from model-viewer
-    # Match: scale="0.333 0.333 0.333" with optional whitespace around it
-    pattern = r'\s+scale="0\.333 0\.333 0\.333"'
+    # Match: scale="0.05 0.05 0.05" with optional whitespace around it
+    pattern = r'\s+scale="0\.05 0\.05 0\.05"'
     new_content = re.sub(pattern, '', content)
     
     if new_content != content:
