@@ -1526,10 +1526,10 @@ select, select option {
     color: #fff;
   }
 
-  /* Hide the original nav in the header */
-  .header-inner .main-nav {
+  /* Hide the original nav in the header - DISABLED to show nav on mobile */
+  /* .header-inner .main-nav {
     display: none !important;
-  }
+  } */
 }
 
 /* Removed conflicting double size rules */
