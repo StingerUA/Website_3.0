@@ -48,9 +48,9 @@
 @media (min-width: 1025px) {
     .header-social {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;
         align-items: center !important;
-        gap: 6px !important;
+        gap: 12px !important;
     }
 
     .header-inner .main-nav .dropdown {
@@ -64,6 +64,7 @@
         flex-direction: row !important;
         gap: 6px !important;
         align-items: center !important;
+        order: 2 !important;
     }
 
     .header-social a img {
@@ -76,6 +77,7 @@
         grid-template-columns: repeat(4, auto) !important;
         gap: 6px !important;
         align-items: center !important;
+        order: 1 !important;
     }
 
     .header-cart-icon img {
@@ -216,30 +218,56 @@
     background: rgba(2, 6, 23, 0.98) !important;
 }
 
-/* Ensure social icons and langs are always flex column on desktop as requested */
-/* "4 icons ... in one line and in the second line under them 3 icons" */
+/* Ensure social icons and langs are always flex row as requested */
 .header-social {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-end !important; /* Right align usually looks better in header */
-    justify-content: center;
+    flex-direction: row !important;
+    align-items: center !important; /* Center align vertically */
+    justify-content: flex-end;
+    gap: 12px !important;
+    flex-wrap: wrap !important; /* Allow wrapping on very small screens */
 }
 
 .social-row {
     display: flex !important;
     flex-direction: row !important;
-    gap: 12px !important;
-    margin-bottom: 6px !important;
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+    order: 2 !important; /* Place social icons after lang switch (in the corner) */
 }
 
 .top-lang-switch {
     display: flex !important;
     flex-direction: row !important;
-    gap: 12px !important;
+    gap: 8px !important;
     justify-content: center;
+    order: 1 !important; /* Place lang switch before social icons */
+}
+
+/* Ensure icons are small enough to fit in one line */
+.header-social a img {
+    width: 16px !important;
+    height: 16px !important;
 }
 
 /* Override previous mobile styles if needed to keep the column layout or switch to row?
    User didn't specify, but usually header is compact on mobile.
    I'll keep column for consistency if space permits, or let them wrap.
 */
+
+/* ===== MOBILE HEADER - CART ICON FIX ===== */
+@media (max-width: 1024px) {
+    /* Move the cart icon to absolute top-left */
+    .header-cart-link {
+        position: absolute !important;
+        top: 15px !important;
+        left: 15px !important;
+        margin: 0 !important;
+        z-index: 10005 !important; /* Higher than menu toggle or logo */
+    }
+
+    /* Shift the logo/left icons to make space for the cart */
+    .logo-sub-icons {
+        margin-left: 40px !important;
+    }
+}
