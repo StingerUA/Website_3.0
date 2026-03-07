@@ -1744,8 +1744,8 @@ select, select option {
 }
 
 .main-center-logo .albaspace-img {
-    height: 108px !important;
-    max-height: 108px !important;
+    height: 44px !important;
+    max-height: 44px !important;
     width: auto !important;
     padding: 0 !important;
     transform: none !important; /* Ensure no previous scaling applies */
