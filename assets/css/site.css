@@ -532,14 +532,14 @@ select, select option {
 
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .main-nav {
     gap: 8px;
     margin: 10px 0;
     order: 3;
     width: 100%;
   }
-}
+} */
 
 .main-nav a{
 
@@ -1797,7 +1797,7 @@ select, select option {
 /* ===== MOBILE LAYOUT (max-width: 1024px) ===== */
 @media (max-width: 1024px) {
     .header-inner {
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap !important; /* Allow wrapping for mobile navigation on new line */
         justify-content: space-between !important;
     }
 
@@ -1924,7 +1924,46 @@ select, select option {
 .model-loading-overlay.fade-out { opacity: 0; transform: translateY(-6px); transition: opacity 0.45s ease, transform 0.45s ease; pointer-events: none; }
 
 @media (max-width: 768px) {
-  .model-loading-overlay .loader-card { padding: 18px; }
-  .model-loading-overlay .loading-logo img { width: 140px; }
+  .main-nav {
+    display: flex !important; /* Force visibility on mobile */
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    order: 10 !important; /* Place at the bottom of header flex container */
+    margin-top: 10px !important;
+    padding: 10px 0 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    flex: none !important; /* Don't grow to fill space between logo/socials */
+  }
+
+  .main-nav a, .main-nav .dropdown-trigger {
+    padding: 6px 10px !important;
+    border: 1px solid rgba(0, 194, 255, 0.3) !important;
+    border-radius: 6px !important;
+    background: rgba(0, 194, 255, 0.1) !important;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+  }
+
+  .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(10px) !important;
+    display: none !important;
+    width: auto !important;
+    min-width: 140px !important;
+    background: #111827 !important;
+    border: 1px solid rgba(0, 194, 255, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    z-index: 10000 !important;
+    opacity: 1 !important;
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block !important;
+  }
 }
+
 
