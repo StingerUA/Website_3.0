@@ -1,0 +1,254 @@
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <!-- Logo -->
+    <div class="header-logo-container">
+      <a href="/eng/index.html" class="header-logo">
+        <img src="/assets/images/albaspace.png" alt="AlbaSpace" class="albaspace-img">
+      </a>
+      <!-- Sub-icons under logo -->
+      <div class="logo-sub-icons">
+        <a href="/eng/index.html" class="header-logo-icon">
+          <img src="/assets/images/albalogo.png" alt="Logo">
+        </a>
+        <a href="#" class="ai-widget-toggle" aria-label="AI widget" title="AI">
+          <img src="/assets/images/albamenai.png" alt="AI">
+        </a>
+        <div class="alien-dropdown-container" style="position: relative; display: inline-block;">
+          <a href="#" class="alien-ghost" aria-label="Alien" title="LogIn" onclick="toggleAlienMenu(event)">
+            <img src="/assets/icons/alien.png" alt="LogIn">
+          </a>
+          <div id="alienMenu" style="display: none; position: absolute; left: 0; top: 120%; background: rgba(2, 6, 23, 0.95); border: 1px solid rgba(0, 194, 255, 0.3); border-radius: 12px; padding: 12px; min-width: 140px; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); z-index: 99999;">
+             <a href="#" class="alien-menu-item">Sign In</a>
+             <a href="#" class="alien-menu-item open-signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BURGER -->
+    <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+      <span class="menu-label">MENU</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+      <a href="/eng/index.html">HOME</a>
+      <a href="/eng/atlas.html">ATLAS</a>
+      <a href="/eng/albamen.html">ALBAMAN</a>      
+      <a href="/eng/shop.html">SHOP</a>
+      <div class="dropdown">
+        <a href="/eng/hakkimizda.html" class="dropdown-trigger" aria-expanded="false">ABOUT US</a>
+        <div class="dropdown-menu">
+          <a href="/eng/basindabiz.html">PRESS</a>
+          <a href="/eng/galeri.html">GALLERY</a>
+          <a href="/eng/iletisim.html">CONTACT</a>
+        </div>
+      </div>
+      <a href="/eng/hizmetler.html">SERVICES</a>
+      <div class="dropdown">
+        <a href="/eng/kupsat.html" class="dropdown-trigger" aria-expanded="false">PRODUCTS</a>
+        <div class="dropdown-menu">
+          <a href="/eng/kupsat.html">KUBESAT</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Social icons -->
+    <div class="header-social">
+      <div class="social-row">
+        <a href="https://www.instagram.com/albaspace_/" target="_blank" aria-label="Instagram" data-track="inst">
+          <img src="/assets/icons/inst.png" alt="Instagram">
+        </a>
+        <a href="https://www.linkedin.com/in/idrisalbayrak/" target="_blank" aria-label="LinkedIn">
+          <img src="/assets/icons/linkdinblac.png" alt="LinkedIn">
+        </a>
+        <a href="https://wa.me/905387781018" target="_blank" aria-label="WhatsApp" data-track="whatsapp">
+          <img src="/assets/icons/watsupp
+        <a href="https://www.youtube.com/@AlbaSpaceTr" target="_blank" aria-label="YouTube">
+          <img src="/assets/icons/youtube.png" alt="YouTube">
+        </a>
+      </div>
+
+      <!-- Language switch -->
+      <div class="top-lang-switch">
+        <a href="/index.html" data-lang="tr" class="lang-flag" aria-label="Türkçe">
+          <img src="/assets/icons/flag-tr.png" alt="Türkçe" />
+        </a>
+
+        <a href="/eng/index.html" data-lang="en" class="lang-flag" aria-label="English">
+          <img src="/assets/icons/flag-us.png" alt="English" />
+        </a>
+
+        <a href="/rus/index.html" data-lang="ru" class="lang-flag" aria-label="Русский">
+          <img src="/assets/icons/flag-rus.png" alt="Русский" />
+        </a>
+
+        <a href="/eng/cart.html" class="lang-flag header-cart-link" aria-label="Cart">
+          <span class="header-cart-icon">
+            <img src="/assets/icons/chart.png" alt="Cart">
+            <span class="header-cart-count" data-cart-count>0</span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<style>
+/* Увеличить иконки в хедере в 2 раза, не затрагивая главный логотип */
+.header-logo-icon img { transform: scale(2); transform-origin: center; display: inline-block; }
+.header-logo img { transform: scale(7.0); }
+.header-social img,
+.top-lang-switch img {
+  transform: scale(4); /* Increased from 2 to 4 per user request */
+  transform-origin: center;
+  display: inline-block;
+}
+.logo-sub-icons img,
+.header-cart-icon img,
+.alien-ghost img,
+.ai-widget-toggle img {
+  transform: scale(2);
+  transform-origin: center;
+  display: inline-block;
+}
+.header-cart-count { transform: none; }
+/* Move AlbaSpace image slightly right so it doesn't overlap main logo */
+.albaspace-img { margin-left: 24px; display: inline-block; }
+</style>
+
+<style>
+  /* Make cookie modal white across site when header is included */
+  .cookie-modal { background-color: #ffffff !important; color: #020617 !important; box-shadow: 0 12px 36px rgba(2,6,23,0.45) !important; border-radius: 8px !important; }
+  .cookie-header, .cookie-text, .cookie-link { color: #020617 !important; }
+  .cookie-link { color: var(--accent, #00c2ff) !important; }
+  .btn-settings { background-color: transparent !important; color: var(--accent, #00c2ff) !important; border-color: rgba(2,6,23,0.08) !important; }
+  .btn-accept { background-color: #000 !important; color: #fff !important; }
+</style>
+
+<style>
+  /* Make the Hizmetleri / Services nav link blue */
+  .main-nav a[href="/hizmetler.html"],
+  .main-nav a[href="/eng/hizmetler.html"],
+  .main-nav a[href="/rus/hizmetler.html"] {
+    color: var(--accent, #00c2ff) !important;
+  }
+</style>
+
+<link rel="stylesheet" href="/assets/css/force-white-text.css">
+<link rel="stylesheet" href="/assets/css/shop-neon-overrides.css">
+<link rel="stylesheet" href="/assets/css/model-nav-overrides.css">
+<link rel="stylesheet" href="/assets/css/remove-blog-overlay.css">
+<link rel="stylesheet" href="/assets/css/fix-layout.css">
+<script src="/assets/js/menu-toggle.js" defer></script>
+<script src="/assets/js/cart.js" defer></script>
+<script src="/assets/js/preloader.js" defer></script>
+<script src="/assets/js/lang-switch.js" defer></script>
+<script src="/assets/js/ai-widget.js" defer></script>
+<script src="/assets/js/model-nav-loader.js" defer></script>
+<script>
+  function toggleAlienMenu(e) {
+    e.preventDefault();
+    const menu = document.getElementById('alienMenu');
+    if (menu.style.display === 'none') {
+      menu.style.display = 'block';
+    } else {
+      menu.style.display = 'none';
+    }
+  }
+  document.addEventListener('click', function(e) {
+    const container = document.querySelector('.alien-dropdown-container');
+    const menu = document.getElementById('alienMenu');
+    if (container && !container.contains(e.target) && menu && menu.style.display === 'block') {
+      menu.style.display = 'none';
+    }
+  });
+</script>
+
+<!-- include signup modal so header injects modal on every page where header is included -->
+<div data-include="/assets/includes/signup-modal.html"></div>
+
+<style>
+  /* Shift logo and alien icon slightly right and add spacing */
+  .header-logo-container {
+    margin-left: 10px;
+    margin-right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .logo-sub-icons { display:flex; gap:14px; align-items:center; margin-left:-8px; }
+  .alien-dropdown-container { margin-left:6px; }
+  @media (max-width: 900px) {
+    .header-logo-container { margin-left:6px; gap:8px; }
+    .logo-sub-icons { gap:10px; }
+    .albaspace-img { margin-left: 16px; margin-top: -2px; }
+  }
+</style>
+
+<style>
+  /* Prevent header icons from overlapping and remove outlines */
+  .header-social .social-row,
+  .logo-sub-icons,
+  .top-lang-switch {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .header-social img,
+  .top-lang-switch img,
+  .logo-sub-icons img,
+  .header-cart-icon img,
+  .alien-ghost img,
+  .ai-widget-toggle img {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    z-index: 1;
+    display: inline-block;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  @media (max-width: 900px) {
+    .header-social .social-row,
+    .logo-sub-icons,
+    .top-lang-switch { gap: 8px; }
+    .header-social img,
+    .logo-sub-icons img,
+    .top-lang-switch img { margin: 0 !important; }
+  }
+</style>
+
+<style>
+  /* Remove translucent blue panels on contact pages */
+  .page-wrapper:has(.contact-section),
+  .page-wrapper:has(.contact-section) .contact-card,
+  .contact-section .contact-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+</style>
+
+<style>
+  /* Remove borders/outlines under logo, AI agent, alien icons - aggressively */
+  .header-logo-container,
+  .header-logo-container *,
+  .logo-sub-icons,
+  .logo-sub-icons *,
+  .ai-widget-toggle,
+  .alien-ghost,
+  .alien-dropdown-container {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+  }
+</style>
