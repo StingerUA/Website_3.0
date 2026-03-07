@@ -1,26 +1,26 @@
-п»ї<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr" class="product-text-black">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KatlaГ§/Sonsuz KГјp вЂ“ AlbaSpace</title>
+  <title>Katlac/Sonsuz Kup – AlbaSpace</title>
   
-  <!-- Р’Р°С€Рё РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Рµ СЃС‚РёР»Рё (РґР»СЏ С…РµРґРµСЂР° Рё С„СѓС‚РµСЂР°) -->
+  <!-- Ваши оригинальные стили (для хедера и футера) -->
   <link rel="stylesheet" href="/assets/css/site.css">
   <link rel="stylesheet" href="/assets/css/product-overrides.css">
   
-  <!-- Tailwind Рё С€СЂРёС„С‚С‹ РґР»СЏ РЅРѕРІРѕРіРѕ РґРёР·Р°Р№РЅР° СЃС‚СЂР°РЅРёС†С‹ -->
+  <!-- Tailwind и шрифты для нового дизайна страницы -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   
-  <!-- Р’Р°С€Рё РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Рµ СЃРєСЂРёРїС‚С‹ -->
+  <!-- Ваши оригинальные скрипты -->
   <script src="/assets/js/include.js" defer></script>
   <script src="/assets/js/menu-toggle.js" defer></script>
   <script src="/assets/js/cart.js" defer></script>
-  <!-- product-gallery.js РЅРµ РїРѕРґРєР»СЋС‡Р°РµРј, С‚Р°Рє РєР°Рє РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РЅРѕРІР°СЏ РІСЃС‚СЂРѕРµРЅРЅР°СЏ Р»РѕРіРёРєР° РґР»СЏ РіР°Р»РµСЂРµРё -->
+  <!-- product-gallery.js не подключаем, так как используется новая встроенная логика для галереи -->
 
   <style>
-    /* РќР°СЃС‚СЂРѕР№РєРё РЅРѕРІРѕРіРѕ РґРёР·Р°Р№РЅР° */
+    /* Настройки нового дизайна */
     :root {
       --header-bg: #020617;
       --accent: #00c2ff;
@@ -37,7 +37,7 @@
       overflow-x: hidden;
     }
 
-    /* Р¤РѕРЅ */
+    /* Фон */
     .space-bg {
       position: fixed;
       top: 0;
@@ -49,7 +49,7 @@
       pointer-events: none;
     }
 
-    /* Р“Р°Р»РµСЂРµСЏ */
+    /* Галерея */
     .main-image-container {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -74,7 +74,7 @@
       transform: translateY(-2px);
     }
 
-    /* РљРЅРѕРїРєРё */
+    /* Кнопки */
     .btn-glow {
       background: var(--accent);
       box-shadow: 0 0 20px rgba(0, 194, 255, 0.3);
@@ -91,14 +91,14 @@
       display: none;
     }
 
-    /* Р­С„С„РµРєС‚ СЃС‚РµРєР»Р° */
+    /* Эффект стекла */
     .glass-card {
       background: rgba(17, 24, 39, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    /* РђРЅРёРјР°С†РёРё */
+    /* Анимации */
     .reveal {
       opacity: 0;
       transform: translateY(20px);
@@ -110,7 +110,7 @@
       transform: translateY(0);
     }
 
-    /* РРєРѕРЅРєРё РѕРїР»Р°С‚С‹ */
+    /* Иконки оплаты */
     .payment-icons img {
       height: 24px;
       width: auto;
@@ -160,18 +160,18 @@
   <link rel="stylesheet" href="/assets/css/product-text-black.css">
 </head>
 <body>
-  <!-- Р’Р°С€ РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Р№ С…РµРґРµСЂ -->
-  <div data-include="/header-tr.html"></div>
+  <!-- Ваш оригинальный хедер -->
+  <div data-include="/header-tr-black"></div>
 
   
 
   <main class="max-w-7xl mx-auto px-4 py-8 md:py-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start product-grid">
       
-      <!-- Р“Р°Р»РµСЂРµСЏ -->
+      <!-- Галерея -->
       <div class="reveal">
         <div class="main-image-container mb-6">
-          <img id="mainImage" src="/assets/images/hat.png" alt="KatlaГ§/Sonsuz KГјp" class="w-full h-auto object-cover aspect-[4/5]">
+          <img id="mainImage" src="/assets/images/hat.png" alt="Katlac/Sonsuz Kup" class="w-full h-auto object-cover aspect-[4/5]">
         </div>
         <div class="flex gap-4 overflow-x-auto pb-2" id="galleryThumbs">
           <button class="thumb-btn active rounded-xl flex-shrink-0 w-20 h-20 md:w-24 md:h-24 overflow-hidden" onclick="changeImage(this, '/assets/images/hat.png')">
@@ -192,18 +192,18 @@
           </button></div>
       </div>
 
-      <!-- Р”РµС‚Р°Р»Рё С‚РѕРІР°СЂР° -->
+      <!-- Детали товара -->
       <div class="reveal" style="transition-delay: 0.1s;">
-        <nav class="text-xs uppercase tracking-widest text-gray-500 mb-4">ГњrГјnler / Giyim / KatlaГ§/Sonsuz KГјp</nav>
-        <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight uppercase">KatlaГ§/Sonsuz KГјp</h1>
+        <nav class="text-xs uppercase tracking-widest text-gray-500 mb-4">Urunler / Giyim / Katlac/Sonsuz Kup</nav>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight uppercase">Katlac/Sonsuz Kup</h1>
         <div class="text-3xl font-light text-white mb-8">120.00 TL</div>
         
         <div class="glass-card p-6 rounded-3xl mb-8">
-          <h3 class="text-sm font-semibold uppercase text-gray-400 mb-4">Г–zellikler</h3>
+          <h3 class="text-sm font-semibold uppercase text-gray-400 mb-4">Ozellikler</h3>
           <ul class="space-y-3 text-gray-300">
             <li class="flex items-center gap-3">
               <span class="w-1.5 h-1.5 rounded-full" style="background:var(--accent)"></span>
-              KatlaГ§/Sonsuz KГјp
+              Katlac/Sonsuz Kup
             </li>
           </ul>
         </div>
@@ -215,35 +215,35 @@
           <img src="/assets/icons/mastercard.png" alt="mastercard">
           <img src="/assets/icons/visa.png" alt="visa">
         </div><div class="flex flex-col sm:flex-row gap-4 mb-8">
-          <!-- Р’С‹Р±РѕСЂ РєРѕР»РёС‡РµСЃС‚РІР° -->
+          <!-- Выбор количества -->
           <div class="flex items-center bg-gray-900 border border-gray-800 rounded-2xl p-1 h-14" data-qty>
             <button class="w-12 h-full flex items-center justify-center text-xl hover:text-white transition" onclick="updateQty(-1)">&minus;</button>
             <input type="number" id="qtyInput" value="1" min="1" class="qty-input w-12 bg-transparent text-center font-semibold outline-none text-white" data-qty-input>
             <button class="w-12 h-full flex items-center justify-center text-xl hover:text-white transition" onclick="updateQty(1)">&plus;</button>
           </div>
           
-          <!-- РљРЅРѕРїРєР° РґРѕР±Р°РІР»РµРЅРёСЏ РІ РєРѕСЂР·РёРЅСѓ -->
+          <!-- Кнопка добавления в корзину -->
           <button id="addToCartBtn" 
             class="btn-glow flex-1 h-14 rounded-2xl text-black font-bold uppercase tracking-wider transition-all"
             data-product-id="cub"
-            data-product-name="KatlaГ§/Sonsuz KГјp"
+            data-product-name="Katlac/Sonsuz Kup"
             data-product-price="120"
             data-product-image="/assets/images/hat.png"
             data-add-label="SEPETE EKLE"
-            data-added-label="EKLENDД°!">
+            data-added-label="EKLENDI!">
             SEPETE EKLE
           </button>
         </div>
 
-        <!-- РРєРѕРЅРєРё РѕРїР»Р°С‚С‹ -->
+        <!-- Иконки оплаты -->
       </div>
     </div>
 
-    <!-- РџРѕС…РѕР¶РёРµ С‚РѕРІР°СЂС‹ -->
+    <!-- Похожие товары -->
     <section class="mt-24 reveal">
       <div class="flex justify-between items-end mb-10">
         <div>
-          <h2 class="text-3xl font-bold uppercase tracking-tight">BunlarД± da beДџenebilirsiniz</h2>
+          <h2 class="text-3xl font-bold uppercase tracking-tight">Bunlar? da begenebilirsiniz</h2>
           <div class="h-1 w-20 bg-blue-500 mt-2 rounded-full"></div>
         </div>
       </div>
@@ -252,18 +252,18 @@
     </section>
   </main>
 
-  <!-- Р’Р°С€ РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Р№ С„СѓС‚РµСЂ -->
-  <div data-include="/footer-tr.html"></div>
+  <!-- Ваш оригинальный футер -->
+  <div data-include="/footer-tr-black"></div>
 
   <script>
-    // Р›РѕРіРёРєР° РіР°Р»РµСЂРµРё
+    // Логика галереи
     function changeImage(el, src) {
       document.getElementById('mainImage').src = src;
       document.querySelectorAll('.thumb-btn').forEach(btn => btn.classList.remove('active'));
       el.classList.add('active');
     }
 
-    // Р›РѕРіРёРєР° РєРѕР»РёС‡РµСЃС‚РІР°
+    // Логика количества
     function updateQty(delta) {
       const input = document.getElementById('qtyInput');
       let val = parseInt(input.value) + delta;
@@ -271,7 +271,7 @@
       input.value = val;
     }
 
-    // РђРЅРёРјР°С†РёСЏ РїСЂРё СЃРєСЂРѕР»Р»Рµ
+    // Анимация при скролле
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -282,13 +282,13 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Р›РѕРіРёРєР° РєРѕСЂР·РёРЅС‹ (СЃ РїРѕРґРґРµСЂР¶РєРѕР№ РІР°С€РµРіРѕ cart.js)
+    // Логика корзины (с поддержкой вашего cart.js)
     const cartBtn = document.getElementById('addToCartBtn');
     cartBtn.addEventListener('click', () => {
       const input = document.getElementById('qtyInput');
       const qty = parseInt(input.value || '1', 10);
       
-      // РџСЂРѕРІРµСЂСЏРµРј, Р·Р°РіСЂСѓР·РёР»СЃСЏ Р»Рё РіР»РѕР±Р°Р»СЊРЅС‹Р№ РјРµРЅРµРґР¶РµСЂ РєРѕСЂР·РёРЅС‹ РёР· РІР°С€РµРіРѕ cart.js
+      // Проверяем, загрузился ли глобальный менеджер корзины из вашего cart.js
       if (typeof cartManager !== 'undefined') {
           cartManager.addItem({
             id: cartBtn.dataset.productId,
@@ -299,12 +299,12 @@
             qty
           });
       } else {
-        console.warn('cartManager РЅРµ РЅР°Р№РґРµРЅ. РџСЂРѕРІРµСЂСЊС‚Рµ РїРѕРґРєР»СЋС‡РµРЅРёРµ /assets/js/cart.js');
+        console.warn('cartManager не найден. Проверьте подключение /assets/js/cart.js');
       }
 
-      // Р’РёР·СѓР°Р»СЊРЅР°СЏ РѕР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ
+      // Визуальная обратная связь
       const originalText = cartBtn.innerHTML;
-      cartBtn.innerHTML = cartBtn.dataset.addedLabel || 'EKLENDД°!';
+      cartBtn.innerHTML = cartBtn.dataset.addedLabel || 'EKLENDI!';
       cartBtn.style.background = '#22c55e';
       cartBtn.disabled = true;
       

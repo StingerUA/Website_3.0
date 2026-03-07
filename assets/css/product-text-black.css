@@ -39,14 +39,15 @@ html.product-text-black svg {
   stroke: #000000 !important;
 }
 
-/* Make header and footer backgrounds dark blue on product pages with separation */
+/* Make header and footer backgrounds light on product pages with separation */
 html.product-text-black .site-header,
 html.product-text-black header.site-header,
 html.product-text-black header {
-  background: #020617 !important; /* deep dark blue */
-  background-color: #020617 !important;
-  border-bottom: 1px solid rgba(255,255,255,0.15) !important; /* Thin separator line */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important; /* Subtle shadow */
+  background: #ffffff !important; /* White background */
+  background-color: #ffffff !important;
+  color: #000000 !important; /* Black text */
+  border-bottom: 1px solid rgba(0,0,0,0.1) !important; /* Subtle separator */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05) !important; /* Subtle shadow */
 }
 
 html.product-text-black footer,
@@ -54,11 +55,23 @@ html.product-text-black .footer,
 html.product-text-black .footer--tr,
 html.product-text-black .footer--en,
 html.product-text-black .footer--ru {
-  background: #020617 !important;
-  background-color: #020617 !important;
-  color: #ffffff !important;
-  border-top: 1px solid rgba(255,255,255,0.15) !important; /* Thin separator line */
-  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.15) !important; /* Subtle shadow above footer */
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-top: 1px solid rgba(0,0,0,0.1) !important; /* Subtle separator */
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.05) !important; /* Subtle shadow above footer */
+}
+
+/* Ensure links in header/footer are black */
+html.product-text-black .site-header a,
+html.product-text-black footer a {
+  color: #000000 !important;
+}
+
+/* Ensure icons are not inverted (if any filter was applied) */
+html.product-text-black .site-header img,
+html.product-text-black footer img {
+  filter: none !important;
 }
 
 /* Force dark background on header/footer children too */
