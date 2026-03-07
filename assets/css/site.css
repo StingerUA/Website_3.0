@@ -1736,17 +1736,19 @@ select, select option {
     margin-right: auto !important; /* Push everything else to right */
 }
 
-/* Logo Sizing - Reduced by 2x as requested */
-.header-logo img:first-child {
+/* Logo Sizing */
+.logo-sub-icons img {
     width: 20px !important;
     height: 20px !important;
     padding: 2px !important;
 }
 
 .main-center-logo .albaspace-img {
-    height: 24px !important;
-    max-height: 24px !important;
+    height: 108px !important;
+    max-height: 108px !important;
     width: auto !important;
+    padding: 0 !important;
+    transform: none !important; /* Ensure no previous scaling applies */
 }
 
 .logo-sub-icons img {

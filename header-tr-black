@@ -16,7 +16,7 @@
         </a>
         <div id="alienMenu" style="display: none; position: absolute; left: 0; top: 120%; background: rgba(2, 6, 23, 0.95); border: 1px solid rgba(0, 194, 255, 0.3); border-radius: 12px; padding: 12px; min-width: 140px; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); z-index: 99999;">
            <a href="#" class="alien-menu-item">Giriş Yap</a>
-           <a href="#" class="alien-menu-item open-signup">Kayıt Ol</a>
+           <a href="#" class="alien-menu-item open-signup">Kayıт Ol</a>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
         <div class="dropdown-menu">
           <a href="/basindabiz.html">BASINDA BİZ</a>
           <a href="/galeri.html">GALERİ</a>
-          <a href="/iletisim.html">İLETİŞİМ</a>
+          <a href="/iletisim.html">İLETİŞИМ</a>
         </div>
       </div>
       <div class="dropdown">
@@ -57,20 +57,16 @@
     <!-- Social icons -->
     <div class="header-social">
       <div class="social-row">
-        <a href="https://www.instagram.com/albaspace_/" target="_blank"
-           aria-label="Instagram" data-track="inst">
+        <a href="https://www.instagram.com/albaspace_/" target="_blank" aria-label="Instagram" data-track="inst">
           <img src="/assets/icons/inst.png" alt="Instagram">
         </a>
-        <a href="https://www.linkedin.com/in/idrisalbayrak/" target="_blank"
-           aria-label="LinkedIn">
+        <a href="https://www.linkedin.com/in/idrisalbayrak/" target="_blank" aria-label="LinkedIn">
           <img src="/assets/icons/linkdin.png" alt="LinkedIn">
         </a>
-        <a href="https://wa.me/905387781018" target="_blank"
-           aria-label="WhatsApp" data-track="whatsapp">
+        <a href="https://wa.me/905387781018" target="_blank" aria-label="WhatsApp" data-track="whatsapp">
           <img src="/assets/icons/watsupp.png" alt="WhatsApp">
         </a>
-        <a href="https://www.youtube.com/@AlbaSpaceTr" target="_blank"
-           aria-label="YouTube">
+        <a href="https://www.youtube.com/@AlbaSpaceTr" target="_blank" aria-label="YouTube">
           <img src="/assets/icons/youtube.png" alt="YouTube">
         </a>
       </div>
@@ -106,15 +102,6 @@
 .header-cart-count { transform: none; }
 </style>
 
-<style>
-  /* Make cookie modal white across site when header is included */
-  .cookie-modal { background-color: #ffffff !important; color: #020617 !important; box-shadow: 0 12px 36px rgba(2,6,23,0.45) !important; border-radius: 8px !important; }
-  .cookie-header, .cookie-text, .cookie-link { color: #020617 !important; }
-  .cookie-link { color: var(--accent, #00c2ff) !important; }
-  .btn-settings { background-color: transparent !important; color: var(--accent, #00c2ff) !important; border-color: rgba(2,6,23,0.08) !important; }
-  .btn-accept { background-color: #000 !important; color: #fff !important; }
-</style>
-
 <link rel="stylesheet" href="/assets/css/force-white-text.css">
 <link rel="stylesheet" href="/assets/css/shop-neon-overrides.css">
 <link rel="stylesheet" href="/assets/css/model-nav-overrides.css">
@@ -125,27 +112,6 @@
 <script src="/assets/js/lang-switch.js" defer></script>
 <script src="/assets/js/ai-widget.js" defer></script>
 <script src="/assets/js/model-nav-loader.js" defer></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const hideOn = [
-      '/index.html',
-      '/shop.html',
-      '/hakkimizda.html',
-      '/hizmetler.html',
-      '/kupsat.html',
-      '/basindabiz.html',
-      '/galeri.html',
-      '/iletisim.html'
-    ];
-    if (hideOn.includes(location.pathname)) {
-      const btn = document.querySelector('.ai-widget-toggle');
-      if (btn) btn.style.display = 'none';
-    }
-  });
-</script>
-
-<!-- include signup modal so header injects modal on every page where header is included -->
-<div data-include="/assets/includes/signup-modal.html"></div>
 <script>
   function toggleAlienMenu(e) {
     e.preventDefault();
@@ -165,96 +131,5 @@
   });
 </script>
 
-<style>
-  /* Сдвинуть логотип и иконки под ним немного вправо и дать отступы */
-  .header-logo-container {
-    margin-left: 10px;
-    margin-right: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo-sub-icons {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    margin-left: -8px;
-  }
-
-  .alien-dropdown-container {
-    margin-left: 6px;
-  }  
-
-  /* Убедиться, что логотипы не перекрывают правые иконки на узких экранах */
-  @media (max-width: 900px) {
-    .header-logo-container { margin-left: 6px; gap: 8px; }
-    .logo-sub-icons { gap: 10px; }
-    .albaspace-img { margin-left: 16px; margin-top: -2px; }
-  }
-</style>
-
-<style>
-  /* Prevent header icons from overlapping and remove outlines */
-  .header-social .social-row,
-  .logo-sub-icons,
-  .top-lang-switch {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .header-social img,
-  .top-lang-switch img,
-  .logo-sub-icons img,
-  .header-cart-icon img,
-  .alien-ghost img,
-  .ai-widget-toggle img {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    margin: 0 !important;
-    z-index: 1;
-    display: inline-block;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-  }
-  @media (max-width: 900px) {
-    .header-social .social-row,
-    .logo-sub-icons,
-    .top-lang-switch { gap: 8px; }
-    .header-social img,
-    .logo-sub-icons img,
-    .top-lang-switch img { margin: 0 !important; }
-  }
-</style>
-
-<style>
-  /* Убираем голубые полупрозрачные панели на страницах контактов */
-  .page-wrapper:has(.contact-section),
-  .page-wrapper:has(.contact-section) .contact-card,
-  .contact-section .contact-card {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-</style>
-
-<style>
-  /* Remove borders/outlines under logo, AI agent, alien icons - aggressively */
-  .header-logo-container,
-  .header-logo-container *,
-  .logo-sub-icons,
-  .logo-sub-icons *,
-  .ai-widget-toggle,
-  .alien-ghost,
-  .alien-dropdown-container {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
-    text-decoration: none !important;
-  }
-</style>
-
+<!-- include signup modal so header injects modal on every page where header is included -->
+<div data-include="/assets/includes/signup-modal.html"></div>
