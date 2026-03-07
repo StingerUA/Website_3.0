@@ -1743,9 +1743,15 @@ select, select option {
     padding: 2px !important;
 }
 
-.header-logo .albaspace-img {
-    height: 11px !important;
-    max-height: 11px !important;
+.main-center-logo .albaspace-img {
+    height: 24px !important;
+    max-height: 24px !important;
+    width: auto !important;
+}
+
+.logo-sub-icons img {
+    width: 20px !important;
+    height: 20px !important;
 }
 
 /* Flags Layout */
@@ -1965,5 +1971,46 @@ select, select option {
     display: block !important;
   }
 }
+
+/* ===== HEADER CENTER LOGO LAYOUT ===== */
+.header-inner {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+}
+
+.logo-sub-icons {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  order: 1 !important;
+}
+
+.main-center-logo {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  order: 2 !important;
+  margin: 0 auto !important;
+}
+
+.header-social {
+  flex: 1 !important;
+  display: flex !important;
+  justify-content: flex-end !important;
+  order: 3 !important;
+  margin-left: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .logo-sub-icons, .header-social {
+    flex: 1 !important;
+  }
+  .main-center-logo {
+    flex: 0 0 auto !important;
+  }
+}
+
 
 
