@@ -46,6 +46,22 @@
 
 /* ===== DESKTOP LAYOUT (1025px and above) ===== */
 @media (min-width: 1025px) {
+    .logo-sub-icons {
+        order: 1 !important;
+    }
+
+    .header-inner .main-nav {
+        order: 2 !important;
+    }
+
+    .main-center-logo {
+        order: 3 !important;
+    }
+
+    .header-social {
+        order: 4 !important;
+    }
+
     .header-social {
         display: flex !important;
         flex-direction: row !important;
@@ -96,6 +112,16 @@
 
 /* ===== MOBILE LAYOUT (max-width: 1024px) ===== */
 @media (max-width: 1024px) {
+    /* Prevent horizontal scrolling globally */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
     .site-header {
         background: rgba(2, 6, 23, 0.95) !important;
         position: relative !important;
@@ -128,13 +154,16 @@
        Let's put social and lang on the RIGHT side of the top line. */
     
     .main-center-logo {
-        display: none !important; /* Hide center text logo on mobile to save space, rely on icon logo? 
-                                     Or keep it but move social/lang to top right absolute? */
+        display: flex !important;
+        order: 2 !important; /* Place on the second line */
+        flex: 0 0 100% !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
     }
     /* Let's try to put social+lang in the top right corner absolutely or flexed */
 
     .header-social {
-        order: 2 !important;
+        order: 1 !important;
         flex: 1 !important;
         display: flex !important;
         flex-direction: row !important; /* Force row */
