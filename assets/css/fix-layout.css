@@ -106,52 +106,78 @@
 
     .header-inner {
         flex-wrap: wrap !important;
-        gap: 15px !important;
+        gap: 5px !important;
         display: flex !important;
         justify-content: space-between !important;
-        padding: 15px !important;
+        padding: 10px 15px !important;
         height: auto !important;
     }
 
+    /* 1. TOP LINE: Logo, Social Icons, Lang Switch */
+    
+    /* Logo on the left */
     .logo-sub-icons {
         order: 1 !important;
-        flex: 1 !important;
-        justify-content: flex-start !important;
+        flex: 0 0 auto !important;
+        margin-left: 40px !important; /* Space for cart icon */
     }
 
+    /* Center Logo (if visible, but usually we want it in flow or hidden on mobile if too big, 
+       but user didn't ask to hide it. Let's keep it but ensure it doesn't break layout) 
+       Actually, standard mobile header usually has logo. 
+       Let's put social and lang on the RIGHT side of the top line. */
+    
     .main-center-logo {
-        order: 2 !important;
-        flex: 0 0 auto !important;
-        margin: 0 auto !important;
+        display: none !important; /* Hide center text logo on mobile to save space, rely on icon logo? 
+                                     Or keep it but move social/lang to top right absolute? */
     }
+    /* Let's try to put social+lang in the top right corner absolutely or flexed */
 
     .header-social {
-        order: 3 !important;
+        order: 2 !important;
         flex: 1 !important;
         display: flex !important;
-        flex-direction: row !important;
+        flex-direction: row !important; /* Force row */
         align-items: center !important;
         justify-content: flex-end !important;
-        gap: 4px !important;
-        margin-left: 0 !important;
+        gap: 8px !important;
+        margin-left: auto !important;
+        width: auto !important;
     }
 
+    /* Ensure Social and Lang are in one line */
+    .header-social .social-row {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        order: 1 !important; /* Social first */
+    }
+
+    .header-social .top-lang-switch {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 6px !important;
+        order: 2 !important; /* Lang second */
+    }
+
+    /* 2. SECOND LINE: Navigation */
     .header-inner .main-nav {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
-        order: 10 !important;
+        order: 3 !important; /* Force to next line */
         width: 100% !important;
-        margin: 15px 0 !important;
-        justify-content: space-between !important; /* Spread items out */
-        flex: none !important;
+        margin-top: 10px !important;
+        margin-bottom: 5px !important;
+        justify-content: space-between !important;
+        flex: 0 0 100% !important;
         position: relative !important;
         z-index: 10002 !important;
-        flex-wrap: nowrap !important; /* Force one line */
-        gap: 4px !important; /* Reduce gap to fit */
-        overflow-x: auto !important; /* Allow scrolling if screen is too narrow */
+        flex-wrap: nowrap !important;
+        gap: 4px !important;
+        overflow-x: auto !important;
         -webkit-overflow-scrolling: touch;
-        padding-bottom: 5px !important; /* Space for scrollbar if any */
+        padding-bottom: 0 !important;
     }
 
     /* Hide scrollbar for cleaner look */
@@ -162,17 +188,19 @@
     .header-inner .main-nav a, 
     .header-inner .main-nav .dropdown-trigger {
         display: inline-flex !important;
-        padding: 6px 8px !important; /* Reduce padding */
-        border: 1px solid rgba(0, 194, 255, 0.4) !important;
-        border-radius: 6px !important;
-        background: rgba(0, 194, 255, 0.1) !important;
-        font-size: 11px !important; /* Reduce font size */
+        padding: 6px 4px !important; /* Minimal padding */
+        border: none !important; /* Remove border */
+        border-radius: 0 !important; /* Remove radius */
+        background: transparent !important; /* Remove background */
+        font-size: 11px !important; 
         white-space: nowrap !important;
         color: #ffffff !important;
         text-decoration: none !important;
         opacity: 1 !important;
         visibility: visible !important;
-        flex-shrink: 0 !important; /* Prevent squishing too much */
+        flex-shrink: 0 !important; 
+        text-transform: uppercase !important; /* Ensure uppercase */
+        font-weight: 600 !important; /* Make text bolder */
     }
 
     .header-social .social-row {
