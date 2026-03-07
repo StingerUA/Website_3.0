@@ -39,13 +39,14 @@ html.product-text-black svg {
   stroke: #000000 !important;
 }
 
-/* Make header and footer backgrounds dark blue on product pages */
+/* Make header and footer backgrounds dark blue on product pages with separation */
 html.product-text-black .site-header,
 html.product-text-black header.site-header,
 html.product-text-black header {
   background: #020617 !important; /* deep dark blue */
   background-color: #020617 !important;
-  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.15) !important; /* Thin separator line */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important; /* Subtle shadow */
 }
 
 html.product-text-black footer,
@@ -56,7 +57,8 @@ html.product-text-black .footer--ru {
   background: #020617 !important;
   background-color: #020617 !important;
   color: #ffffff !important;
-  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-top: 1px solid rgba(255,255,255,0.15) !important; /* Thin separator line */
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.15) !important; /* Subtle shadow above footer */
 }
 
 /* Force dark background on header/footer children too */

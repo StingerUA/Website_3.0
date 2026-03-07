@@ -3,6 +3,18 @@
    improved readability on shop/cart/product pages (desktop + mobile).
 */
 
+/* ===== Header and Footer Separation for Shop Pages ===== */
+/* Apply separation styles when this CSS is loaded (shop pages) */
+.site-header, header {
+  border-bottom: 1px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15) !important;
+}
+
+.footer, footer {
+  border-top: 1px solid rgba(255,255,255,0.15) !important;
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.15) !important;
+}
+
 /* White background for shop / product containers only (exclude cart & main site) */
 .shop-container,
 .product-page,
