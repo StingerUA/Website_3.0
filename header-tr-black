@@ -27,11 +27,7 @@
       </div>
     </div>
 
-    <!-- BURGER -->
-    <button class="menu-toggle" type="button"
-            aria-label="Menüyü aç/kapat" aria-expanded="false">
-      <span class="menu-label">MENU</span>
-    </button>
+
 
     <!-- Navigation -->
     <nav class="main-nav">
