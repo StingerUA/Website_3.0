@@ -44,86 +44,152 @@
     display: none !important;
 }
 
-/* ===== DESKTOP LAYOUT (1025px and above) ===== */
-@media (min-width: 1025px) {
-    .logo-sub-icons {
-        order: 1 !important;
+/* ===== DESKTOP LAYOUT (1024px and above) ===== */
+@media (min-width: 1024px) {
+    /* Universal Header Container */
+    .site-header {
+        height: 80px !important; /* Fixed height 60-80px */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
 
-    /* Move AlbaSpace logo to position 2 (after small icon logo) and align left */
+    .header-inner {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        padding: 0 20px !important;
+        gap: 20px !important;
+    }
+
+    /* Prevent overflow on flex items */
+    .logo-sub-icons,
+    .main-center-logo,
+    .header-inner .main-nav,
+    .header-social {
+        min-width: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* ORDERING */
+    .logo-sub-icons {
+        order: 1 !important;
+        flex: 0 0 auto !important;
+    }
+
     .main-center-logo {
         order: 2 !important;
-        margin-left: 20px !important; /* Small gap from logo icon */
+        margin-left: 10px !important;
         margin-right: auto !important; /* Push nav to the right */
         display: flex !important;
         align-items: center !important;
     }
 
-    /* Reduce logo size by 25% (44px * 0.75 = 33px) */
+    /* Reduce logo size */
     .main-center-logo .albaspace-img {
         height: 33px !important;
         max-height: 33px !important;
         width: auto !important;
     }
 
+    /* NAVIGATION */
     .header-inner .main-nav {
         order: 3 !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex: 1 1 auto !important; /* Allow growing */
+        gap: 15px !important; /* Base gap */
     }
 
+    .header-inner .main-nav .dropdown {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        height: 100% !important;
+        overflow: visible !important; /* Ensure dropdowns are visible */
+    }
+
+    /* Dropdown positioning */
+    .header-inner .main-nav .dropdown-menu {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        z-index: 1000 !important;
+        display: none;
+        background: #111827; /* Default dark */
+        border: 1px solid rgba(255,255,255,0.1);
+        min-width: 180px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    
+    /* Show dropdown on hover */
+    .header-inner .main-nav .dropdown:hover .dropdown-menu {
+        display: block !important;
+    }
+
+    /* SOCIAL */
     .header-social {
         order: 4 !important;
-    }
-
-    .header-social {
         display: flex !important;
         flex-direction: row !important;
         align-items: center !important;
         gap: 12px !important;
-    }
-
-    .header-inner .main-nav .dropdown {
-        display: inline-flex !important;
-        align-items: center !important;
-        position: relative !important;
+        flex: 0 0 auto !important;
     }
 
     .header-social .social-row {
         display: flex !important;
         flex-direction: row !important;
-        gap: 6px !important;
+        gap: 8px !important;
         align-items: center !important;
-        order: 2 !important;
     }
 
     .header-social a img {
-        width: 16px !important;
-        height: 16px !important;
+        width: 18px !important;
+        height: 18px !important;
     }
 
     .top-lang-switch {
-        display: grid !important;
-        grid-template-columns: repeat(4, auto) !important;
-        gap: 6px !important;
+        display: flex !important;
+        gap: 8px !important;
         align-items: center !important;
-        order: 1 !important;
     }
-
-    .header-cart-icon img {
-    width: 28px !important;
-    height: 28px !important;
-}
 
     .menu-toggle {
         display: none !important;
     }
 
-    .header-inner {
-        flex-wrap: nowrap !important;
+    /* MEDIA QUERIES FOR FINE TUNING */
+    
+    /* 1280px (Laptop) */
+    @media (min-width: 1280px) {
+        .header-inner { gap: 30px !important; padding: 0 40px !important; }
+        .header-inner .main-nav { gap: 25px !important; }
+        .main-nav a { font-size: 14px !important; }
+    }
+
+    /* 1366px (Large Laptop) */
+    @media (min-width: 1366px) {
+        .header-inner { max-width: 1320px !important; margin: 0 auto !important; }
+        .header-inner .main-nav { gap: 30px !important; }
+    }
+
+    /* 1920px (Desktop) */
+    @media (min-width: 1920px) {
+        .header-inner { max-width: 1800px !important; }
+        .main-nav a { font-size: 16px !important; }
+        .header-social { gap: 20px !important; }
     }
 }
 
-/* ===== MOBILE LAYOUT (max-width: 1024px) ===== */
-@media (max-width: 1024px) {
+/* ===== MOBILE LAYOUT (max-width: 1023px) ===== */
+@media (max-width: 1023px) {
     /* Prevent horizontal scrolling globally */
     html, body {
         overflow-x: hidden !important;
