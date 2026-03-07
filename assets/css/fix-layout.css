@@ -143,27 +143,36 @@
         order: 10 !important;
         width: 100% !important;
         margin: 15px 0 !important;
-        justify-content: center !important;
+        justify-content: space-between !important; /* Spread items out */
         flex: none !important;
         position: relative !important;
         z-index: 10002 !important;
-        flex-wrap: wrap !important;
-        gap: 10px !important;
+        flex-wrap: nowrap !important; /* Force one line */
+        gap: 4px !important; /* Reduce gap to fit */
+        overflow-x: auto !important; /* Allow scrolling if screen is too narrow */
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 5px !important; /* Space for scrollbar if any */
+    }
+
+    /* Hide scrollbar for cleaner look */
+    .header-inner .main-nav::-webkit-scrollbar {
+        display: none;
     }
 
     .header-inner .main-nav a, 
     .header-inner .main-nav .dropdown-trigger {
         display: inline-flex !important;
-        padding: 8px 12px !important;
+        padding: 6px 8px !important; /* Reduce padding */
         border: 1px solid rgba(0, 194, 255, 0.4) !important;
-        border-radius: 8px !important;
+        border-radius: 6px !important;
         background: rgba(0, 194, 255, 0.1) !important;
-        font-size: 12px !important;
+        font-size: 11px !important; /* Reduce font size */
         white-space: nowrap !important;
         color: #ffffff !important;
         text-decoration: none !important;
         opacity: 1 !important;
         visibility: visible !important;
+        flex-shrink: 0 !important; /* Prevent squishing too much */
     }
 
     .header-social .social-row {
