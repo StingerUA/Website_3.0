@@ -16,8 +16,9 @@
     var triggers = container.querySelectorAll('.dropdown-trigger');
     triggers.forEach(function(trigger) {
       trigger.addEventListener('click', function(e) {
-        // На мобильных устройствах (<= 768px) перехватываем клик для открытия меню
-        if (window.innerWidth <= 768) {
+        // На мобильных устройствах (<= 1024px) перехватываем клик для открытия меню
+        // Используем 1024px, так как в CSS мы используем этот брейкпоинт для мобильного меню
+        if (window.innerWidth <= 1024) {
           e.preventDefault();
           e.stopPropagation();
           
@@ -41,7 +42,7 @@
 
   // Закрытие меню при клике вне его области
   document.addEventListener('click', function(e) {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       if (!nav.contains(e.target)) {
         var triggers = nav.querySelectorAll('.dropdown-trigger');
         triggers.forEach(function(trigger) {
