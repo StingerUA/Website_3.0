@@ -120,7 +120,7 @@
         position: absolute !important;
         top: 100% !important;
         left: 0 !important;
-        z-index: 1000 !important;
+        z-index: 9999 !important; /* Increased z-index to 9999 as requested */
         display: none;
         background: #111827; /* Default dark */
         border: 1px solid rgba(255,255,255,0.1);
@@ -411,6 +411,37 @@
     width: 200px !important;
     text-align: center;
     background: rgba(2, 6, 23, 0.98) !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 191, 255, 0.3) !important;
+    display: none;
+    flex-direction: column !important;
+    gap: 15px !important;
+}
+
+#alienMenu a.alien-menu-item {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    background-color: #00BFFF !important; /* Deep Sky Blue */
+    color: #ffffff !important;
+    text-decoration: none !important;
+    border-radius: 6px !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 6px rgba(0, 191, 255, 0.2) !important;
+    text-align: center !important;
+    border: none !important;
+}
+
+#alienMenu a.alien-menu-item:hover,
+#alienMenu a.alien-menu-item:focus {
+    background-color: #009ACD !important; /* Darker Blue on hover */
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.6) !important;
+    transform: translateY(-2px) !important;
+    outline: none !important;
 }
 
 /* Ensure social icons and langs are always flex row as requested */
