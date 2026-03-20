@@ -2,18 +2,27 @@
 (function(){
   // Default localized texts. Can be overridden by setting
   // window.MODEL_PRELOADER_TEXTS = { en: {...}, tr: {...} }
-  const DEFAULT_TEXTS = {
+    const DEFAULT_TEXTS = {
     tr: {
       loadingText: 'Lütfen bekleyin, 3D model yükleniyor…',
       loadingSubtext: 'Bu işlem internet hızınıza göre birkaç saniye sürebilir.',
       overlayHint: 'AR & 3D deneyimi hazırlanıyor',
-      logoText: 'ALBASPACE'
+      logoText: 'ALBASPACE',
+      errorText: '⚠️ Model yüklenemedi. Lütfen internet bağlantınızı kontrol edin.'
     },
     en: {
       loadingText: 'Please wait — 3D model is loading…',
       loadingSubtext: 'This may take a few seconds depending on your connection.',
       overlayHint: 'Preparing AR & 3D experience',
-      logoText: 'ALBASPACE'
+      logoText: 'ALBASPACE',
+      errorText: '⚠️ Failed to load model. Please check your connection.'
+    },
+    ru: {
+      loadingText: 'Пожалуйста, подождите — 3D-модель загружается…',
+      loadingSubtext: 'Это может занять несколько секунд в зависимости от вашего соединения.',
+      overlayHint: 'Подготовка AR & 3D',
+      logoText: 'ALBASPACE',
+      errorText: '⚠️ Не удалось загрузить модель. Проверьте соединение или файл.'
     }
   };
 
@@ -29,7 +38,8 @@
       loadingText: viewer.dataset.loadingText || base.loadingText,
       loadingSubtext: viewer.dataset.loadingSubtext || base.loadingSubtext,
       overlayHint: viewer.dataset.overlayHint || base.overlayHint,
-      logoText: viewer.dataset.logoText || base.logoText
+      logoText: viewer.dataset.logoText || base.logoText,
+      errorText: viewer.dataset.errorText || base.errorText
     };
 
     if (window.MODEL_PRELOADER_DEBUG) {
@@ -82,6 +92,11 @@
     wrapper.insertBefore(overlay, viewer);
 
     const progressFill = overlay.querySelector('.progress-fill');
+    const loadingTextEl = overlay.querySelector('.loading-text');
+    const loadingSubtextEl = overlay.querySelector('.loading-subtext');
+    const orb = overlay.querySelector('.loader-orb');
+
+    let fallback;
 
     const hideOverlay = () => {
       if (!overlay || overlay.classList.contains('fade-out')) return;
@@ -90,21 +105,35 @@
       setTimeout(() => { overlay?.remove(); }, 550);
     };
 
+    const showError = () => {
+      clearTimeout(fallback);
+      if (progressFill) progressFill.style.width = '100%';
+      if (progressFill) progressFill.style.backgroundColor = '#ef4444'; // red
+      if (loadingTextEl) loadingTextEl.textContent = getTextsForViewer(viewer).errorText;
+      if (loadingSubtextEl) loadingSubtextEl.textContent = '';
+      if (orb) orb.style.display = 'none';
+      // Do not hide overlay automatically on error
+    };
+
     function updateProgress(e){
       const t = (e && e.detail && typeof e.detail.totalProgress === 'number') ? e.detail.totalProgress : null;
       if (t !== null && progressFill){
         const percent = Math.max(0, Math.min(100, Math.round(t*100)));
         progressFill.style.width = percent + '%';
-        if (percent >= 100) setTimeout(hideOverlay, 200);
+        if (percent >= 100) {
+          clearTimeout(fallback);
+          setTimeout(hideOverlay, 200);
+        }
       }
     }
 
     viewer.addEventListener('progress', updateProgress);
-    viewer.addEventListener('load', () => { if (progressFill) progressFill.style.width = '100%'; setTimeout(hideOverlay, 250); });
-    viewer.addEventListener('poster-dismissed', () => { if (progressFill) progressFill.style.width = '100%'; setTimeout(hideOverlay, 250); });
+    viewer.addEventListener('load', () => { clearTimeout(fallback); if (progressFill) progressFill.style.width = '100%'; setTimeout(hideOverlay, 250); });
+    viewer.addEventListener('poster-dismissed', () => { clearTimeout(fallback); if (progressFill) progressFill.style.width = '100%'; setTimeout(hideOverlay, 250); });
+    viewer.addEventListener('error', showError);
 
-    // Fallback: if model loading stalls
-    const fallback = setTimeout(hideOverlay, 20000);
+    // Fallback: if model loading stalls (increased to 60s for heavy 50MB+ models)
+    fallback = setTimeout(hideOverlay, 60000);
 
     // if viewer becomes removed, cleanup
     const obs = new MutationObserver(() => {
