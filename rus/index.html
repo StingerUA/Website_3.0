@@ -15,7 +15,12 @@
 
 <body class="home-page">
   <div data-include="/header-ru.html"></div>
+  <!-- Override site-wide cookie/modal white background for this page -->
   <style>
+    .cookie-modal { background-color: #ffffff !important; color: #000000 !important; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; border: none !important; }
+    .cookie-header, .cookie-text, .cookie-link { color: #000000 !important; }
+    .btn-settings { background-color: transparent !important; color: #000000 !important; border-color: rgba(0,0,0,0.2) !important; }
+    .btn-accept { background-color: #000 !important; color: #fff !important; }
     /* Ensure primary hero button is blue on Russian page */
     .btn-primary { background: var(--accent) !important; color: #020617 !important; }
 
