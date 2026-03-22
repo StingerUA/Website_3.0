@@ -291,6 +291,10 @@ select, select option {
 
   box-shadow: 0 4px 12px rgba(0, 194, 255, 0.15);
 
+  position: relative;
+
+  z-index: 2147483647;
+
 }
 
 .header-inner{
@@ -613,7 +617,11 @@ select, select option {
 
 .dropdown-menu {
 
-  display: none;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  display: block;
 
   position: absolute;
 
@@ -623,27 +631,33 @@ select, select option {
 
   background: #111827;
 
-  border: 1px solid #0f172a;
+  border: 1px solid #1e293b;
 
   border-radius: 8px;
 
-  min-width: 150px;
+  min-width: 200px;
 
-  z-index: 9999;
+  z-index: 2147483647;
 
-  box-shadow: 0 4px 12px rgba(46, 84, 133, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 
   opacity: 0;
 
-  transform: translateY(-10px);
+  transform: translateY(10px);
 
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  padding: 8px 0;
+
+  margin-top: 5px;
 
 }
 
 .dropdown:hover .dropdown-menu {
 
-  display: block;
+  visibility: visible;
+
+  pointer-events: auto;
 
   opacity: 1;
 
@@ -653,7 +667,9 @@ select, select option {
 
 .dropdown.active .dropdown-menu {
 
-  display: block;
+  visibility: visible;
+
+  pointer-events: auto;
 
   opacity: 1;
 
@@ -665,21 +681,29 @@ select, select option {
 
   display: block;
 
-  padding: 10px 15px;
+  padding: 12px 20px;
 
-  color: #d1d5db;
+  color: #e2e8f0;
 
   text-decoration: none;
 
   font-size: 14px;
 
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+
+  white-space: nowrap;
+
 }
 
 .dropdown-menu a:hover {
 
-  background: #1f2937;
+  background: rgba(0, 194, 255, 0.1);
 
   color: #ffffff;
+
+  padding-left: 24px;
 
 }
 
