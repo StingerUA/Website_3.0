@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Demir Yumurta - Taze ve Doğal Yumurtalar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c5e31; /* Dark Green */
+            --secondary-color: #e8f5e9; /* Light Green Background */
+            --text-color: #333;
+            --white-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--white-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .social-media a {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #4caf50;
+        }
+
+        main {
+            padding: 0;
+        }
+
+        .hero {
+            background-image: url('https://images.unsplash.com/photo-1599540037996-33565c58ebd7?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--white-color);
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .about, .order-section {
+            background: var(--white-color);
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .order-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        select {
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            min-width: 200px;
+            cursor: pointer;
+        }
+
+        .price-button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 25px; /* Align with select inputs */
+        }
+
+        .price-button:hover {
+            background-color: #1e7e34;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <!-- Убедитесь, что файл logo.jpg находится в той же папке, что и этот HTML-файл -->
+            <img src="logo.jpg" alt="MD Demir Yumurta Logo">
+        </div>
+        <div class="social-media">
+            <a href="https://wa.me/905400900147" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <!-- Замените # на вашу ссылку в Instagram -->
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>MD Demir Yumurta</h1>
+                <p>Sofralarınıza Gelen Sağlık ve Lezzet</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="about">
+                <h2>Doğallık ve Tazelik</h2>
+                <p>Türkiye'nin verimli topraklarında, en doğal koşullarda yetiştirdiğimiz tavuklarımızdan elde ettiğimiz günlük, taze yumurtaları sofralarınıza ulaştırıyoruz. Kalite ve müşteri memnuniyeti en büyük önceliğimizdir.</p>
+            </section>
+
+            <section class="order-section">
+                <h2>Sipariş</h2>
+                <p>İhtiyacınıza uygun yumurta boyutunu ve paket seçeneğini belirleyin, fiyat teklifi almak için bizimle iletişime geçin.</p>
+                <div class="order-form">
+                    <div class="form-group">
+                        <label for="size-select">Yumurta Boyutu:</label>
+                        <select id="size-select">
+                            <option value="S">S (Küçük)</option>
+                            <option value="M">M (Orta)</option>
+                            <option value="L">L (Büyük)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="package-select">Paket İçeriği:</label>
+                        <select id="package-select">
+                            <option value="10">10'lu Paket</option>
+                            <option value="15">15'li Paket</option>
+                            <option value="30">30'lu Koli</option>
+                        </select>
+                    </div>
+                    <button class="price-button" id="price-request-btn">Fiyat Bilgisi Al</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MD Demir Yumurta. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        document.getElementById('price-request-btn').addEventListener('click', function() {
+            const eggSize = document.getElementById('size-select').value;
+            const packageSize = document.getElementById('package-select').value;
+            
+            const message = `Merhaba, ${eggSize} boy ${packageSize}'lu yumurta için fiyat bilgisi almak istiyorum.`;
+            
+            const whatsappUrl = `https://wa.me/905400900147?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+</body>
+</html>
