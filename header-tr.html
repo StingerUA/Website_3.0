@@ -99,6 +99,11 @@
           </span>
         </a>
       </div>
+
+      <div class="worker-auth-panel">
+        <button onclick="login()" class="worker-auth-login">Login with Google</button>
+        <div id="user" class="worker-auth-user"></div>
+      </div>
     </div>
 
   </div>
@@ -119,6 +124,7 @@
 <script src="/assets/js/lang-switch.js" defer></script>
 <script src="/assets/js/ai-widget.js" defer></script>
 <script src="/assets/js/model-nav-loader.js" defer></script>
+<script src="/assets/js/worker-auth.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const hideOn = [
