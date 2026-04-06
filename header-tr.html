@@ -11,12 +11,14 @@
         <img src="/assets/images/albamenai.png" alt="AI">
       </a>
       <div class="alien-dropdown-container" style="position: relative; display: inline-block;">
-        <a href="#" class="alien-ghost" aria-label="Alien" title="LogIn" onclick="toggleAlienMenu(event)">
+        <a href="#" class="alien-ghost" aria-label="Hesap menusu" aria-controls="alienMenu" aria-expanded="false" aria-haspopup="true" title="Giris" onclick="toggleAlienMenu(event)">
           <img src="/assets/icons/alien.png" alt="LogIn">
         </a>
         <div id="alienMenu" style="display: none; position: absolute; left: 0; top: 120%; background: rgba(2, 6, 23, 0.95); border: 1px solid rgba(0, 194, 255, 0.3); border-radius: 12px; padding: 12px; min-width: 140px; backdrop-filter: blur(10px); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); z-index: 99999;">
-           <a href="#" class="alien-menu-item">Giriş Yap</a>
+           <a href="#" class="alien-menu-item open-login">Giriş Yap</a>
+           <button type="button" class="alien-menu-item alien-menu-google" onclick="login({ closeMenu: true, source: 'header-menu' })" aria-label="Google ile Giriş Yap">Google ile Giriş Yap</button>
            <a href="#" class="alien-menu-item open-signup">Kayıt Ol</a>
+           <div id="user" class="worker-auth-user" aria-live="polite"></div>
         </div>
       </div>
     </div>
@@ -99,11 +101,6 @@
           </span>
         </a>
       </div>
-
-      <div class="worker-auth-panel">
-        <button onclick="login()" class="worker-auth-login">Login with Google</button>
-        <div id="user" class="worker-auth-user"></div>
-      </div>
     </div>
 
   </div>
@@ -150,10 +147,13 @@
   function toggleAlienMenu(e) {
     e.preventDefault();
     const menu = document.getElementById('alienMenu');
+    const trigger = document.querySelector('.alien-ghost');
     if (menu.style.display === 'none') {
       menu.style.display = 'block';
+      if (trigger) trigger.setAttribute('aria-expanded', 'true');
     } else {
       menu.style.display = 'none';
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
     }
   }
   document.addEventListener('click', function(e) {
@@ -161,6 +161,16 @@
     const menu = document.getElementById('alienMenu');
     if (container && !container.contains(e.target) && menu && menu.style.display === 'block') {
       menu.style.display = 'none';
+      const trigger = document.querySelector('.alien-ghost');
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const menu = document.getElementById('alienMenu');
+      const trigger = document.querySelector('.alien-ghost');
+      if (menu) menu.style.display = 'none';
+      if (trigger) trigger.setAttribute('aria-expanded', 'false');
     }
   });
 </script>
