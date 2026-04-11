@@ -295,6 +295,8 @@ select, select option {
 
   z-index: 2147483647;
 
+  overflow: visible !important; /* Ensure dropdowns aren't clipped */
+
 }
 
 .header-inner{
@@ -314,6 +316,10 @@ select, select option {
   flex-wrap:wrap;
 
   position:relative;
+
+  overflow: visible !important; /* Ensure dropdowns aren't clipped */
+
+  z-index: 2147483647 !important; /* Maintain high z-index context */
 
 }
 
@@ -534,6 +540,12 @@ select, select option {
 
   margin:0 10px;
 
+  position: relative;
+
+  overflow: visible !important; /* Ensure dropdowns aren't clipped */
+
+  z-index: 2147483646 !important; /* High z-index context */
+
 }
 
 /* @media (max-width: 480px) {
@@ -590,6 +602,10 @@ select, select option {
 .dropdown {
 
   position: relative;
+
+  overflow: visible !important; /* Ensure dropdowns aren't clipped */
+
+  z-index: 2147483646 !important; /* High z-index context */
 
 }
 
