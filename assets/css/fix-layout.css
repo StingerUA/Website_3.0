@@ -263,7 +263,17 @@
     .logo-sub-icons {
         order: 1 !important;
         flex: 0 0 auto !important;
-        margin-left: 40px !important; /* Space for cart icon */
+        margin-left: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 12px !important;
+        align-items: center !important;
+    }
+
+    /* Ensure alien icon is visible on mobile */
+    .alien-dropdown-container {
+        display: flex !important;
+        align-items: center !important;
     }
 
     /* Center Logo (if visible, but usually we want it in flow or hidden on mobile if too big, 
@@ -278,7 +288,6 @@
         justify-content: center !important;
         margin: 0 auto !important;
     }
-    /* Let's try to put social+lang in the top right corner absolutely or flexed */
 
     .header-social {
         order: 1 !important;
@@ -305,6 +314,29 @@
         flex-direction: row !important;
         gap: 6px !important;
         order: 2 !important; /* Lang second */
+    }
+
+    /* Move cart icon to logo icons on mobile */
+    .header-social .top-lang-switch .header-cart-link {
+        display: none !important; /* Hide from lang switch on mobile */
+    }
+
+    /* Add cart icon to logo-sub-icons on mobile using CSS */
+    .logo-sub-icons::after {
+        content: ''; /* Empty, icon will be moved via JS or displayed via flex */
+    }
+
+    /* Position cart icon next to alien icon */
+    .header-cart-link {
+        display: none !important; /* Hide in header-social on mobile */
+    }
+
+    /* Create clone of cart in logo area for mobile - will use flexbox positioning */
+    .mobile-cart-icon {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: 8px !important;
     }
 
     /* 2. SECOND LINE: Navigation */
