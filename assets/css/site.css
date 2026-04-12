@@ -544,6 +544,8 @@ select, select option {
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
+  z-index: 2147483646 !important;
+
   z-index: 2147483646 !important; /* High z-index context */
 
 }
@@ -653,7 +655,7 @@ select, select option {
 
   min-width: 200px;
 
-  z-index: 2147483647;
+  z-index: 2147483647 !important;
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 
