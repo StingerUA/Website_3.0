@@ -1,5 +1,5 @@
 /**
- * Google OAuth 2.0 Integration for AlbaSpace
+ * Google OAuth 2.0 Integration for Alba Space
  * 
  * Instructions:
  * 1. Go to Google Cloud Console (https://console.cloud.google.com/)

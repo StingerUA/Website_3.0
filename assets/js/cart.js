@@ -1,7 +1,7 @@
 /*
  * cart.js
  *
- * Lightweight client‑side shopping cart for AlbaSpace shop pages.  The cart
+ * Lightweight client‑side shopping cart for Alba Space shop pages.  The cart
  * persists to `localStorage` so that the contents survive page reloads.  It
  * supports multiple variants of a product (e.g. size, colour) by storing
  * additional attributes on each cart entry.  A global `cartManager` object

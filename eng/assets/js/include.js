@@ -1,4 +1,4 @@
-// Unified include.js for AlbaSpace website (English)
+// Unified include.js for Alba Space website (English)
 //
 // This script dynamically loads header and footer fragments, highlights the
 // current navigation item, provides a language switcher, keeps model-viewer
@@ -41,7 +41,7 @@ runAfterDomReady(() => {
   const ensureModelNavLoader = createModelNavLoader();
 
   // ---------------- Mobile nav override ----------------
-  if (!document.getElementById("albaspace-nav-override-style")) {
+  if (!document.getElementById("-nav-override-style")) {
     const navStyle = document.createElement("style");
     navStyle.id = "albaspace-nav-override-style";
     navStyle.textContent = `
@@ -388,7 +388,7 @@ function runAfterDomReady(fn) {
 
 // ================= MODEL VIEWER LOADER =================
 function injectModelViewerStyles() {
-  if (document.getElementById("albaspace-model-viewer-styles")) return;
+  if (document.getElementById("-model-viewer-styles")) return;
 
   const style = document.createElement("style");
   style.id = "albaspace-model-viewer-styles";
@@ -613,11 +613,11 @@ function enhanceFooter(root) {
 
   const emailBtn = document.createElement('a');
   emailBtn.className = 'alba-footer-action';
-  emailBtn.href = 'mailto:hello@albaspace.com.tr';
+  emailBtn.href = 'mailto:hello@.com.tr';
   emailBtn.innerHTML = `
     <div class="action-row">
       <span class="action-icon">✉</span>
-      <span class="action-text">hello@albaspace.com.tr</span>
+      <span class="action-text">hello@.com.tr</span>
     </div>
     <div class="action-hint alba-blink">Write to us</div>
   `;

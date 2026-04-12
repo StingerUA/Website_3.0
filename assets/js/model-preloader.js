@@ -7,7 +7,7 @@
       loadingText: 'Lütfen bekleyin, 3D model yükleniyor…',
       loadingSubtext: 'Bu işlem internet hızınıza göre birkaç saniye sürebilir.',
       overlayHint: 'AR & 3D deneyimi hazırlanıyor',
-      logoText: 'ALBASPACE',
+      logoText: '',
       errorText: '⚠️ Model yüklenemedi. Lütfen internet bağlantınızı kontrol edin.'
     },
     en: {
@@ -58,7 +58,7 @@
     div.innerHTML = `
       <div class="loader-card">
         <div class="loading-logo">
-          <img src="/assets/images/albaspace-logo.png" alt="AlbaSpace Logo" />
+          <img src="/assets/images/albaspace-logo.png" alt="Alba Space Logo" />
           <span>${t.logoText}</span>
         </div>
 

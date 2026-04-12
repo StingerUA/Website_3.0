@@ -1,4 +1,4 @@
-// Unified include.js for AlbaSpace website (Turkish)
+// Unified include.js for Alba Space website (Turkish)
 // Includes: Dynamic Header/Footer, AI Widget (Text+Voice), Analytics (GA4 + Yandex)
 runAfterDomReady(() => {
   // AI-виджеты включены — используются для текстового и голосового общения
@@ -797,7 +797,7 @@ function injectAnalytics() {
 }
 
 function injectModelViewerStyles() {
-  if (document.getElementById("albaspace-model-viewer-styles")) return;
+  if (document.getElementById("-model-viewer-styles")) return;
   const style = document.createElement("style");
   style.id = "albaspace-model-viewer-styles";
   style.textContent = `
@@ -1030,8 +1030,8 @@ function enhanceFooter(root) {
   contactPanel.appendChild(phoneBtn);
   const emailBtn = document.createElement('a');
   emailBtn.className = 'alba-footer-action';
-  emailBtn.href = 'mailto:hello@albaspace.com.tr';
-  emailBtn.innerHTML = `<div class="action-row"><span class="action-icon">✉</span><span class="action-text">hello@albaspace.com.tr</span></div><div class="action-hint alba-blink">${emailHint}</div>`;
+  emailBtn.href = 'mailto:hello@.com.tr';
+  emailBtn.innerHTML = `<div class="action-row"><span class="action-icon">✉</span><span class="action-text">hello@.com.tr</span></div><div class="action-hint alba-blink">${emailHint}</div>`;
   contactPanel.appendChild(emailBtn);
   const map1 = buildMapButton(merkezBlock, mapHint);
   const map2 = buildMapButton(adanaBlock, mapHint);
