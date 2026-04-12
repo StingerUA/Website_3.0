@@ -293,7 +293,7 @@ select, select option {
 
   position: relative;
 
-  z-index: 2147483647;
+  z-index: 50;
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
@@ -319,7 +319,7 @@ select, select option {
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
-  z-index: 2147483647 !important; /* Maintain high z-index context */
+  z-index: 50 !important; /* Maintain high z-index context */
 
 }
 
@@ -544,9 +544,9 @@ select, select option {
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
-  z-index: 2147483646 !important;
+  z-index: 51 !important;
 
-  z-index: 2147483646 !important; /* High z-index context */
+  z-index: 51 !important; /* High z-index context */
 
 }
 
@@ -607,7 +607,7 @@ select, select option {
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
-  z-index: 2147483646 !important; /* High z-index context */
+  z-index: auto; /* Let new dropdown-fix-final.css handle z-index */
 
 }
 
@@ -655,15 +655,15 @@ select, select option {
 
   min-width: 200px;
 
-  z-index: 2147483647 !important;
+  z-index: auto; /* Let new dropdown-fix-final.css handle z-index */
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 
   opacity: 0;
 
-  transform: translateY(10px);
+  transform: none; /* Remove transform to avoid stacking context issues */
 
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.2s ease !important;
 
   padding: 8px 0;
 
@@ -679,7 +679,7 @@ select, select option {
 
   opacity: 1;
 
-  transform: translateY(0);
+  transform: none;
 
 }
 
@@ -691,7 +691,7 @@ select, select option {
 
   opacity: 1;
 
-  transform: translateY(0);
+  transform: none;
 
 }
 

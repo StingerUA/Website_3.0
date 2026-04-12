@@ -37,6 +37,8 @@ runAfterDomReady(() => {
   ensureModelViewerLoaded();
   // 3.1. Фикс фона и ширины на iOS
   injectBackgroundFix();
+  // 3.2. Загружаем dropdown z-index fix
+  injectDropdownZIndexFix();
 
   // 4. Создаём лоадеры
   const ensurePreloaderScript = createPreloaderLoader();
@@ -827,6 +829,17 @@ function injectBackgroundFix() {
     }
   `;
   document.head.appendChild(style);
+}
+
+// Inject dropdown z-index fix CSS
+function injectDropdownZIndexFix() {
+  if (document.getElementById('alba-dropdown-z-index-fix')) return;
+  
+  const link = document.createElement('link');
+  link.id = 'alba-dropdown-z-index-fix';
+  link.rel = 'stylesheet';
+  link.href = '/assets/css/dropdown-z-index-fix.css';
+  document.head.appendChild(link);
 }
 
 function ensureModelViewerLoaded() {
