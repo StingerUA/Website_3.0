@@ -1,11 +1,13 @@
 /**
- * MENU TOGGLE - Mobile & Desktop Dropdown Handler
- * Optimized for performance and accessibility
+ * OPTIMIZED DROPDOWN HANDLER
+ * Simple, fast, memory-efficient dropdown menu handler
+ * No conflicting libraries, no position calculations, no forced layouts
  */
 
 (function initDropdowns() {
   'use strict';
 
+  // Configuration
   const CONFIG = {
     desktop_breakpoint: 1024,
     debug: false
@@ -23,6 +25,7 @@
 
     const nav = document.querySelector('.main-nav');
     if (!nav) {
+      // Retry if nav not found yet
       requestAnimationFrame(init);
       return;
     }
@@ -38,7 +41,7 @@
       setupDropdown(dropdown);
     });
 
-    // Setup event delegation
+    // Setup event delegation for closing
     setupDocumentListeners();
     setupWindowResize();
 
@@ -57,7 +60,7 @@
     const isDesktop = window.innerWidth >= CONFIG.desktop_breakpoint;
 
     if (isDesktop) {
-      // Desktop: hover controlled by CSS
+      // Desktop: hover controlled by CSS, just prevent default
       trigger.addEventListener('click', e => e.preventDefault(), { once: false });
     } else {
       // Mobile: click to toggle
@@ -70,12 +73,12 @@
   }
 
   /**
-   * Toggle dropdown visibility
+   * Toggle dropdown visibility on mobile
    */
   function toggleDropdown(dropdown, trigger, menu) {
     const isActive = dropdown.classList.contains('active');
 
-    // Close other dropdowns
+    // Close all other dropdowns
     document.querySelectorAll('.dropdown.active').forEach(openDropdown => {
       if (openDropdown !== dropdown) {
         openDropdown.classList.remove('active');
@@ -99,6 +102,7 @@
    */
   function setupDocumentListeners() {
     document.addEventListener('click', e => {
+      // Only on mobile
       if (window.innerWidth < CONFIG.desktop_breakpoint) {
         const nav = document.querySelector('.main-nav');
         if (nav && !nav.contains(e.target)) {
@@ -111,7 +115,7 @@
       }
     });
 
-    // Close on Escape
+    // Close on Escape key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         document.querySelectorAll('.dropdown.active').forEach(dropdown => {
@@ -132,6 +136,7 @@
       const wasDesktop = lastWindowWidth >= CONFIG.desktop_breakpoint;
       const isDesktop = currentWidth >= CONFIG.desktop_breakpoint;
 
+      // If crossing desktop/mobile boundary, reset active dropdowns
       if (wasDesktop !== isDesktop) {
         document.querySelectorAll('.dropdown.active').forEach(dropdown => {
           dropdown.classList.remove('active');
@@ -151,11 +156,11 @@
    */
   function log(message) {
     if (CONFIG.debug) {
-      console.log('[MenuToggle]', message);
+      console.log('[Dropdowns]', message);
     }
   }
 
-  // Initialize when DOM is ready
+  // Start initialization when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

@@ -599,7 +599,7 @@ select, select option {
 
 }
 
-/* Dropdown menu */
+/* Dropdown menu - Base styles (overridden by dropdown-optimized.css) */
 
 .dropdown {
 
@@ -607,7 +607,7 @@ select, select option {
 
   overflow: visible !important; /* Ensure dropdowns aren't clipped */
 
-  z-index: auto; /* Let new dropdown-fix-final.css handle z-index */
+  z-index: auto;
 
 }
 
@@ -655,19 +655,19 @@ select, select option {
 
   min-width: 200px;
 
-  z-index: auto; /* Let new dropdown-fix-final.css handle z-index */
+  z-index: 1000;
 
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
 
   opacity: 0;
 
-  transform: none; /* Remove transform to avoid stacking context issues */
+  transform: translateY(-8px);
 
-  transition: opacity 0.2s ease !important;
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
 
   padding: 8px 0;
 
-  margin-top: 5px;
+  margin-top: -1px;
 
 }
 
@@ -679,7 +679,7 @@ select, select option {
 
   opacity: 1;
 
-  transform: none;
+  transform: translateY(0);
 
 }
 
@@ -691,7 +691,7 @@ select, select option {
 
   opacity: 1;
 
-  transform: none;
+  transform: translateY(0);
 
 }
 
