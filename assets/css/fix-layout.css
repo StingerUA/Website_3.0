@@ -53,8 +53,8 @@
         align-items: center !important;
         justify-content: center !important;
         position: relative !important;
-        z-index: 50 !important; /* Reduced from 999999996 - let dropdown-fix-final.css manage z-index */
-        overflow: visible !important; /* Ensure dropdowns aren't clipped */
+        z-index: 50 !important; /* Let shared z-index fixes manage dropdown stacking */
+        overflow: visible !important;
         min-height: 80px !important; /* Maintain minimum visual height */
     }
 
@@ -69,8 +69,8 @@
         padding: 0 20px !important;
         gap: 20px !important;
         position: relative !important;
-        overflow: visible !important; /* Ensure dropdowns aren't clipped */
-        z-index: 50 !important; /* Reduced from 999999996 - let dropdown-fix-final.css manage z-index */
+        z-index: 50 !important; /* Keep header context stable for dropdown fix layers */
+        overflow: visible !important;
     }
 
     /* Prevent overflow on flex items */
@@ -113,8 +113,8 @@
         flex: 1 1 auto !important; /* Allow growing */
         gap: 15px !important; /* Base gap */
         position: relative !important;
-        overflow: visible !important; /* Critical: allow dropdowns to overflow */
-        z-index: 51 !important; /* Let dropdown-fix-final.css override this */
+        z-index: 51 !important; /* Keep nav above header content while shared fixes handle final layering */
+        overflow: visible !important;
     }
 
     .header-inner .main-nav .dropdown {
@@ -123,7 +123,7 @@
         position: relative !important;
         height: auto !important; /* Changed from 100% to auto */
         overflow: visible !important; /* Ensure dropdowns are visible */
-        z-index: 51 !important; /* Let dropdown-fix-final.css override this */
+        z-index: 51 !important; /* Keep dropdown parent above nav siblings */
     }
 
     /* Dropdown positioning */
@@ -420,21 +420,6 @@
         color: #ffffff !important;
         transform: scale(1.05) !important;
     }
-
-    /* Add overlay when dropdown is open */
-    .header-inner .main-nav .dropdown.active::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6);
-        z-index: 9999;
-        backdrop-filter: blur(2px);
-        pointer-events: none !important;
-    }
-
 
     .header-inner .main-nav a, 
     .header-inner .main-nav .dropdown-trigger {
