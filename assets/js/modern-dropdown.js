@@ -8,10 +8,22 @@
   'use strict';
 
   // Wait for DOM and navigation to be ready
+  let waitAttempts = 0;
+  const maxWaitAttempts = 50; // ~5 seconds max wait
+
   function waitForNav() {
     const nav = document.querySelector('.main-nav');
     if (!nav) {
-      setTimeout(waitForNav, 100);
+      if (waitAttempts++ < maxWaitAttempts) {
+        // Use requestAnimationFrame for better performance, fallback to setTimeout
+        if ('requestAnimationFrame' in window) {
+          requestAnimationFrame(() => setTimeout(waitForNav, 100));
+        } else {
+          setTimeout(waitForNav, 100);
+        }
+      } else {
+        console.warn('[modern-dropdown.js] Navigation not found after maximum wait attempts');
+      }
       return;
     }
     initializeDropdowns(nav);

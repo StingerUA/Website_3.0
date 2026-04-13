@@ -61,7 +61,7 @@ runAfterDomReady(() => {
         let lastErr;
         for (const path of tryPaths) {
           try {
-            const res = await fetch(path, { cache: "no-cache" });
+            const res = await fetch(path, { cache: "default" });
             if (!res.ok) throw new Error("Failed " + res.status + " for " + path);
             html = await res.text();
             break;
@@ -90,7 +90,7 @@ runAfterDomReady(() => {
               let nestedErr;
               for (const p of nestedTry) {
                 try {
-                  const res2 = await fetch(p, { cache: 'no-cache' });
+                  const res2 = await fetch(p, { cache: 'default' });
                   if (!res2.ok) throw new Error('Failed ' + res2.status + ' for ' + p);
                   nestedHtml = await res2.text();
                   break;
@@ -760,9 +760,16 @@ function initScrollReveal() {
     });
   };
 
+  // Run immediately
   scan();
-  setTimeout(scan, 300);
-  setTimeout(scan, 1200);
+  
+  // Run again after layout is painted (optimized with requestIdleCallback for performance)
+  // This catches dynamically added elements from headers/footers
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => scan(), { timeout: 800 });
+  } else {
+    setTimeout(scan, 300);
+  }
 }
 
 function injectAnalytics() {
