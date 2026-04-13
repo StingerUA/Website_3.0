@@ -93,10 +93,8 @@ iframe:not([data-ignore-z-index]) {
 
 /* Dropdown menus MUST be visible above everything except modals */
 .dropdown-menu {
-  position: fixed !important;
   z-index: 10000 !important;
   overflow: visible !important;
-  pointer-events: auto !important;
 }
 
 .dropdown-menu.visible,

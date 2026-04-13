@@ -57,7 +57,36 @@
     const isDesktop = window.innerWidth >= CONFIG.desktop_breakpoint;
 
     if (isDesktop) {
-      // Desktop: hover controlled by CSS
+      let closeTimeoutId = null;
+
+      const clearCloseTimer = () => {
+        if (closeTimeoutId) {
+          clearTimeout(closeTimeoutId);
+          closeTimeoutId = null;
+        }
+      };
+
+      const openDropdown = () => {
+        clearCloseTimer();
+        dropdown.classList.add('active');
+        trigger.setAttribute('aria-expanded', 'true');
+      };
+
+      const scheduleCloseDropdown = () => {
+        clearCloseTimer();
+        closeTimeoutId = setTimeout(() => {
+          dropdown.classList.remove('active');
+          trigger.setAttribute('aria-expanded', 'false');
+          closeTimeoutId = null;
+        }, 2000);
+      };
+
+      dropdown.addEventListener('mouseenter', openDropdown);
+      dropdown.addEventListener('mouseleave', scheduleCloseDropdown);
+
+      menu.addEventListener('mouseenter', openDropdown);
+      menu.addEventListener('mouseleave', scheduleCloseDropdown);
+
       trigger.addEventListener('click', e => e.preventDefault(), { once: false });
     } else {
       // Mobile: click to toggle

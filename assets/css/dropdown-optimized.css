@@ -28,7 +28,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(20, 30, 48, 0.95);
+  background: #07143a;
   border: 1px solid rgba(0, 194, 255, 0.3);
   border-radius: 8px;
   border-top: none;
@@ -44,7 +44,12 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   z-index: 1000;
   margin-top: -1px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
+}
+
+/* Avoid duplicated carets if another stylesheet injects an arrow via pseudo-elements */
+.dropdown-trigger::after {
+  content: none !important;
 }
 
 /* Show menu on hover (desktop) */

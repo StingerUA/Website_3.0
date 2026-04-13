@@ -39,6 +39,16 @@ runAfterDomReady(() => {
   injectBackgroundFix();
   // 3.2. Загружаем dropdown z-index fix
   injectDropdownZIndexFix();
+  try {
+    const p = (window.location && window.location.pathname ? window.location.pathname : '/') || '/';
+    const path = String(p).toLowerCase();
+    const isIndex = path === '/' || path === '/index.html' || path === '/eng/index.html' || path === '/rus/index.html';
+    const isProductLike = /\/(product-[^/]+|shop|cart)\.html$/.test(path);
+    if (!isIndex && !isProductLike) {
+      document.documentElement.classList.add('alba-dark-gradient');
+      if (document.body) document.body.classList.add('alba-dark-gradient');
+    }
+  } catch (e) {}
 
   // 4. Создаём лоадеры
   const ensurePreloaderScript = createPreloaderLoader();
