@@ -137,9 +137,27 @@
         }
 
         async function startCamera() {
-            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+            try {
+                // Пытаемся запросить фронтальную камеру
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+                setupVideo(stream);
+            } catch (err) {
+                console.warn("Фронтальная камера не найдена. Пробуем найти любую камеру...");
+                try {
+                    // Запасной вариант для ПК
+                    const fallbackStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    setupVideo(fallbackStream);
+                } catch (fallbackErr) {
+                    console.error("Не удалось найти ни одну камеру:", fallbackErr);
+                    status.innerText = "Kamera bulunamadı!";
+                }
+            }
+        }
+
+        function setupVideo(stream) {
             video.srcObject = stream;
             video.addEventListener("loadeddata", () => {
+                video.play(); // КРИТИЧНО: Принудительно запускаем воспроизведение
                 predictWebcam();
                 switchModel('cap1');
             });
@@ -179,8 +197,8 @@
             const s = faceWidth * config.scale * 10;
             currentModel.scale.set(s, s, s);
 
-            // --- ОБНОВЛЕНО: Смещение 50% ---
-            const downwardShift = s * 0.5; 
+            // --- ИСПРАВЛЕННОЕ СМЕЩЕНИЕ ---
+            const downwardShift = (faceWidth * config.scale) * 0.25; 
 
             if (config.type === 'glasses') {
                 currentModel.position.set(bridge.x, bridge.y - downwardShift, bridge.z);
@@ -196,7 +214,6 @@
             const compositeCtx = compositeCanvas.getContext('2d');
             const threeCanvas = document.getElementById('three_canvas');
 
-            // --- ОБНОВЛЕНО: Логика синхронизации кадра (Object-fit: Cover) ---
             const screenW = window.innerWidth;
             const screenH = window.innerHeight;
             compositeCanvas.width = screenW;
