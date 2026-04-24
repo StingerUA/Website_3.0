@@ -39,7 +39,7 @@
 <body>
 
     <div id="app-container">
-        <video id="webcam" autoplay playsinline></video>
+        <video id="webcam" autoplay muted playsinline></video>
         <canvas id="three_canvas"></canvas>
         <canvas id="hidden_composite_canvas"></canvas>
 
@@ -74,9 +74,9 @@
 
         // --- 1. MODEL AYARLARI ---
         const MODELS_CONFIG = {
-            cap1:     { type: 'cap',     url: 'cap1.glb',     scale: 1.4,  yOffset: 0.18 }, 
-            glasses1: { type: 'glasses', url: 'glasses1.glb', scale: 2.4,  yOffset: 0 },    
-            glasses2: { type: 'glasses', url: 'glasses2.glb', scale: 2.56, yOffset: 0 }     
+            cap1:     { type: 'cap',     url: './cap1.glb',     scale: 1.4,  yOffset: 0.18 }, 
+            glasses1: { type: 'glasses', url: './glasses1.glb', scale: 2.4,  yOffset: 0 },    
+            glasses2: { type: 'glasses', url: './glasses2.glb', scale: 2.56, yOffset: 0 }     
         };
 
         const video = document.getElementById("webcam");
@@ -124,6 +124,12 @@
             if(key === 'none') { activeKey = 'none'; status.innerText = "İzleme Modu"; return; }
 
             const config = MODELS_CONFIG[key];
+            if (!config) {
+                console.error(`✗ Modelin konfigürasyonu bulunamadı: ${key}`);
+                status.innerText = "Hata: Konfigürasyon yok";
+                return;
+            }
+            
             document.getElementById(`btn-${key}`)?.classList.add('active');
             status.innerText = "Yükleniyor...";
             
@@ -135,22 +141,33 @@
                 status.innerText = "Hazır - " + key;
                 console.log(`✓ Scene güncelleştirildi. Nesneler sayısı: ${scene.children.length}`);
             }, (progress) => {
-                console.log(`Yüklemede: ${key} - ${Math.round((progress.loaded / progress.total) * 100)}%`);
+                const percent = Math.round((progress.loaded / progress.total) * 100);
+                console.log(`Yüklemede: ${key} - ${percent}%`);
             }, (error) => {
                 console.error(`✗ Model yükleme hatası: ${key}`, error);
+                console.error(`✗ Yol: ${config.url}`);
                 status.innerText = "Hata: " + key;
             });
         };
 
         async function initAR() {
             try {
+                // Проверка поддержки браузера
+                if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                    throw new Error("getUserMedia не поддерживается этим браузером");
+                }
+                
                 console.log("🚀 Инициализация AR...");
                 const filesetResolver = await FilesetResolver.forVisionTasks("https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm");
                 console.log("✓ FilesetResolver загружен");
                 
                 faceLandmarker = await FaceLandmarker.createFromOptions(filesetResolver, {
-                    baseOptions: { modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`, delegate: "GPU" },
-                    runningMode: "VIDEO", numFaces: 1
+                    baseOptions: { 
+                        modelAssetPath: `https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task`, 
+                        delegate: "GPU" 
+                    },
+                    runningMode: "VIDEO", 
+                    numFaces: 1
                 });
                 console.log("✓ FaceLandmarker инициализирован");
                 
@@ -160,25 +177,48 @@
                 startCamera();
             } catch (err) {
                 console.error("✗ Ошибка инициализации AR:", err);
-                status.innerText = "İnit Hatası";
+                console.error("✗ Error name:", err.name);
+                console.error("✗ Error message:", err.message);
+                status.innerText = "✗ İnit Hatası: " + err.message;
             }
         }
 
         async function startCamera() {
             try {
                 console.log("📷 Запуск камеры...");
-                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: "user",
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    } 
+                });
                 console.log("✓ Получен поток фронтальной камеры");
                 setupVideo(stream);
             } catch (err) {
                 console.warn("⚠ Фронтальная камера не найдена:", err);
                 try {
-                    const fallbackStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    const fallbackStream = await navigator.mediaDevices.getUserMedia({ 
+                        video: {
+                            width: { ideal: 1280 },
+                            height: { ideal: 720 }
+                        }
+                    });
                     console.log("✓ Получен поток запасной камеры");
                     setupVideo(fallbackStream);
                 } catch (fallbackErr) {
                     console.error("✗ Ни одна камера не найдена:", fallbackErr);
+                    console.error("✗ Ошибка:", fallbackErr.name, "-", fallbackErr.message);
                     status.innerText = "Kamera Hatası!";
+                    
+                    // Показать подробное сообщение об ошибке
+                    if (fallbackErr.name === 'NotAllowedError') {
+                        status.innerText = "❌ Разрешение камеры отклонено";
+                    } else if (fallbackErr.name === 'NotFoundError') {
+                        status.innerText = "❌ Камера не найдена";
+                    } else if (fallbackErr.name === 'NotReadableError') {
+                        status.innerText = "❌ Камера занята другим приложением";
+                    }
                 }
             }
         }
@@ -186,20 +226,41 @@
         function setupVideo(stream) {
             console.log("🎬 Настройка видео потока, разрешение:", stream.getVideoTracks()[0]?.getSettings());
             video.srcObject = stream;
+            
+            const setupTimeout = setTimeout(() => {
+                console.warn("⚠ Видео не загрузилось за 10 секунд");
+                status.innerText = "⚠ Видео загружается...";
+            }, 10000);
+            
             video.addEventListener("loadeddata", () => {
+                clearTimeout(setupTimeout);
                 console.log("✓ Видео загружено:", video.videoWidth, "x", video.videoHeight);
-                video.play().then(() => {
-                    console.log("✓ Воспроизведение запущено");
-                    status.innerText = "Камера активна";
-                    predictWebcam();
-                    switchModel('cap1');
-                }).catch(err => {
-                    console.error("✗ Ошибка воспроизведения:", err);
-                    status.innerText = "Воспроизведение ошибка";
-                });
+                
+                // Убедимся что видео готово к воспроизведению
+                if (video.readyState >= 2) {
+                    video.play().then(() => {
+                        console.log("✓ Воспроизведение запущено");
+                        status.innerText = "Камера активна";
+                        predictWebcam();
+                        switchModel('cap1');
+                    }).catch(err => {
+                        console.error("✗ Ошибка воспроизведения:", err);
+                        status.innerText = "Воспроизведение ошибка";
+                    });
+                }
+            }, { once: true });
+            
+            video.addEventListener("canplay", () => {
+                if (video.paused) {
+                    video.play().catch(err => {
+                        console.error("✗ Ошибка при воспроизведении:", err);
+                    });
+                }
             });
+            
             video.addEventListener("error", (e) => {
                 console.error("✗ Ошибка видео:", e);
+                status.innerText = "Video hatası";
             });
         }
 
@@ -286,6 +347,11 @@
             const compositeCtx = compositeCanvas.getContext('2d');
             const threeCanvas = document.getElementById('three_canvas');
 
+            if (!video.videoWidth || !video.videoHeight) {
+                alert('Видео еще не загружено');
+                return;
+            }
+
             const screenW = window.innerWidth;
             const screenH = window.innerHeight;
             compositeCanvas.width = screenW;
@@ -300,15 +366,15 @@
             const offsetX = (screenW - drawW) / 2;
             const offsetY = (screenH - drawH) / 2;
 
-            // 1. Отрисовка видео (зеркально)
+            // 1. Отрисовка видео (без дополнительного зеркаления, так как video уже зеркальна через CSS scaleX)
+            compositeCtx.drawImage(video, offsetX, offsetY, drawW, drawH);
+
+            // 2. Зеркалить Three canvas перед наложением (так как он тоже применен scaleX через CSS)
             compositeCtx.save();
             compositeCtx.translate(screenW, 0);
             compositeCtx.scale(-1, 1);
-            compositeCtx.drawImage(video, offsetX, offsetY, drawW, drawH);
-            compositeCtx.restore();
-
-            // 2. Отрисовка моделей поверх
             compositeCtx.drawImage(threeCanvas, 0, 0, screenW, screenH);
+            compositeCtx.restore();
 
             const dataUrl = compositeCanvas.toDataURL('image/png');
             document.getElementById('preview-image').src = dataUrl;
@@ -324,9 +390,14 @@
         window.closePreview = () => document.getElementById('photo-preview').style.display = 'none';
         
         window.addEventListener('resize', () => {
+            if (!renderer || !camera) return;
+            
             const aspect = window.innerWidth / window.innerHeight;
-            camera.left = -aspect; camera.right = aspect;
-            camera.updateProjectionMatrix();
+            if (camera.left !== undefined) {
+                camera.left = -aspect;
+                camera.right = aspect;
+                camera.updateProjectionMatrix();
+            }
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
